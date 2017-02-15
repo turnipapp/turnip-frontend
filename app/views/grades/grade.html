@@ -1,0 +1,80 @@
+<div class="row main">
+	<div class="side-nav col-md-1 hidden-xs hidden-sm">
+			<div ng-include="'./components/courses-navbar.html'"></div>
+	</div>
+
+	<div class="side-course-nav col-md-2 hidden-xs hidden-sm">
+		<div ng-include="'./components/course-detail-navbar.html'"></div>
+	</div>
+
+	<div class="main-content col-md-9 col-xs-12">
+
+		<div ng-include="'./components/top-nav.html'"></div>
+
+		<div class="main-announcements">			
+			<h3 class="announcementHeader">Detailed Grades</h3>
+			<!-- Instructor grade view -->
+			<div class="grades grade-view" ng-repeat="assignment in masterGrades" ng-if="isInstructor">
+			<h4>
+			Assignment: {{assignment.title}}
+			<a ng-hide="assignment.editing" ng-click="toggleEdit($index)">
+				<span class="fa-stack ">
+					<i class="fa fa-circle fa-stack-2x"></i>
+					<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			<a ng-show="assignment.editing" ng-click="saveGrades($index)">
+				<span class="fa-stack ">
+					<i class="fa fa-circle fa-stack-2x"></i>
+					<i class="fa fa-floppy-o fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			</h4>
+			
+				<table class="table table-striped">
+					<tr>
+						<th>Student</th>
+						<th>Points</th>
+						<th>Out Of</th>
+					</tr>
+
+					<tr class="assignment grades" ng-repeat="student in assignment.students">
+						<td>{{student.firstName}} {{student.lastName}}</td>
+						<td>
+						<span ng-hide="assignment.editing">
+						{{student.score | number: 0}}
+						</span>
+						<input type="text" ng-show="assignment.editing" ng-model="masterGrades[$parent.$index].students[$index].score" />
+						</td>
+						<td>{{assignment.score}}</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="grades" ng-if="!isInstructor">
+			<!-- student grade view -->
+			<h4>Grades for {{firstname}} {{lastname}}</h4>
+			
+				<table class="table table-striped">
+					<tr>
+						<th>Assignment</th>
+						<th>Points</th>
+						<th>Out Of</th>
+					</tr>
+
+					<tr class="assignment grades" ng-repeat="assignment in assignments">
+						<td>{{assignment.title}}</td>
+						<td>{{getGrade(-1, assignment.id) | number: 0}}</td>
+						<td>{{assignment.maxScore}}</td>
+					</tr>
+
+					<tr class="total-row">
+						<td>Average: </td>
+						<td>{{average | number: 2}}%</td>
+						<td></td>
+					</tr>
+				</table>
+			</div>					
+		</div>
+	</div>    
+</div>
