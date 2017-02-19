@@ -1,0 +1,12 @@
+header {
+    width: 100%;
+    background: #fff;
+    text-align: center;
+    margin: 0;
+}
+.nav-item {
+    color: #ACADAD;
+}
+.nav-item.selected {
+    border-bottom: 2px solid #4078E5;
+}

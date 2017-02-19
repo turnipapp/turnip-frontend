@@ -1,7 +1,31 @@
-{{hello}}
-test
-<a ui-sref=".events">Events</a>
-<a ui-sref=".feed">Feed</a>
-<a ui-sref=".profile">Profile</a>
+<header>
+    <div class="row">
+        <div class="col-sm-2">
+            <div as-m-t="2">
+                <span as-f="l bold">Turnip</span>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="max-width">
+                <div class="col-xs-4 nav-item selected" ui-sref=".events" as-p-y="4">
+                    <span as-f="s bold">Events</span>
+                </div>
+                <div class="col-xs-4 nav-item" ui-sref=".feed" as-p-y="4">
+                    <span as-f="s bold">Feed</span>
+                </div>
+                <div class="col-xs-4 nav-item" ui-sref=".profile" as-p-y="4">
+                    <span as-f="s bold">Profile</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div as-m-xy="2">
+                <button as-i-button>Create Event</button>
+            </div>
+        </div>
+    </div>
+</header>
 
-<div ui-view></div>
+<div class="max-width" as-p-xy="4">
+    <div ui-view ></div>
+</div>
