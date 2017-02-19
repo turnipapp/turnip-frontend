@@ -10,8 +10,16 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/hello',
       component: 'app'
     })
+    .state('event', {
+      url: '/event/:id',
+      component: 'event'
+    })
     .state('events', {
       url: '/',
       component: 'events'
+    })
+    .state('profile', {
+      url: '/profile',
+      component: 'profile'
     });
 }
