@@ -3,6 +3,6 @@ module.exports = {
   controller: function ($scope, $stateParams) {
     var id = $stateParams.id;
     $scope.id = id;
-    $scope.hello = 'Hello Event!';
+    $scope.hello = 'Hello Profile!';
   }
 };

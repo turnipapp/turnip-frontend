@@ -10,16 +10,24 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/hello',
       component: 'app'
     })
+    .state('dashboard', {
+      url: '/',
+      component: 'dashboard'
+    })
+    .state('dashboard.events', {
+      url: 'events',
+      component: 'events'
+    })
+    .state('dashboard.profile', {
+      url: 'profile',
+      component: 'profile'
+    })
     .state('event', {
       url: '/event/:id',
       component: 'event'
     })
-    .state('events', {
-      url: '/',
-      component: 'events'
-    })
-    .state('profile', {
-      url: '/profile',
-      component: 'profile'
+    .state('event.map', {
+      url: '/map',
+      component: 'map'
     });
 }
