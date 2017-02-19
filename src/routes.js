@@ -3,13 +3,9 @@ module.exports = routesConfig;
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/events');
 
   $stateProvider
-    .state('app', {
-      url: '/hello',
-      component: 'app'
-    })
     .state('dashboard', {
       url: '/',
       component: 'dashboard'
