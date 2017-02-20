@@ -25,5 +25,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('event.map', {
       url: '/map',
       component: 'map'
+    })
+    .state('login', {
+      url: '/login',
+      component: 'login'
+    })
+    .state('signup', {
+      url: '/signup',
+      component: 'signup'
     });
 }

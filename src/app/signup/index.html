@@ -1,0 +1,14 @@
+<div class="small-max-width">
+    <div as-card as-m-t="4">
+        <div as-p-xy="4">
+            <div as-f="l bold">Signup</div>
+            <input as-i-text placeholder="first name" as-m-t="4" ng-model="firstName"/>
+            <input as-i-text placeholder="last name" as-m-t="4" ng-model="lastName"/>
+            <input as-i-text placeholder="email" as-m-t="4" ng-model="email"/>
+            <input as-i-text placeholder="password" type="password" as-m-t="4" ng-model="password"/>
+            <input as-i-text placeholder="confirm password" type="password" as-m-t="4" ng-model="confirmPassword"/>
+            <button as-i-button as-m-t="4" ng-click="signup()">Signup</button>
+        </div>
+    </div>
+    <div as-m-t="4">{{message}}</div>
+</div>
