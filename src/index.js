@@ -1,5 +1,6 @@
 var angular = require('angular');
 require('./dependencies/as');
+require('angular-cookies');
 
 var dashboard = require('./app/dashboard/dashboard');
 var eventReq = require('./app/event/event');
@@ -21,7 +22,8 @@ var app = 'app';
 module.exports = app;
 
 angular
-  .module(app, ['ui.router', 'angularStyle'])
+  .module(app, ['ui.router', 'angularStyle', 'ngCookies'])
+  .constant('API', {url: 'http://localhost:5000/'})
   .config(routesConfig)
   .component('app', hello)
   .component('dashboard', dashboard)

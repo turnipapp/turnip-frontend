@@ -1,6 +1,6 @@
 module.exports = {
   template: require('./index.html'),
-  controller: function ($scope, $http, $location) {
+  controller: function ($scope, $http, $location, $cookies, API) {
     $scope.message = '';
 
     $scope.login = function () {
@@ -8,8 +8,9 @@ module.exports = {
         email: $scope.email,
         password: $scope.password
       };
-      $http.post('http://localhost:5000/auth/login', login).then(function (res) {
+      $http.post(API.url + 'auth/login', login).then(function (res) {
         if (res.data.success) {
+          $cookies.put('token', res.data.token);
           $location.path('/');
         } else {
           $scope.message = res.data.message;

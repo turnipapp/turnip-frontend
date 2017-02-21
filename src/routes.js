@@ -8,23 +8,38 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('dashboard', {
       url: '/',
-      component: 'dashboard'
+      component: 'dashboard',
+      resolve: {
+        user: mustBeLoggedIn
+      }
     })
     .state('dashboard.events', {
       url: 'events',
-      component: 'events'
+      component: 'events',
+      resolve: {
+        user: mustBeLoggedIn
+      }
     })
     .state('dashboard.profile', {
       url: 'profile',
-      component: 'profile'
+      component: 'profile',
+      resolve: {
+        user: mustBeLoggedIn
+      }
     })
     .state('event', {
       url: '/event/:id',
-      component: 'event'
+      component: 'event',
+      resolve: {
+        user: mustBeLoggedIn
+      }
     })
     .state('event.map', {
       url: '/map',
-      component: 'map'
+      component: 'map',
+      resolve: {
+        user: mustBeLoggedIn
+      }
     })
     .state('login', {
       url: '/login',
@@ -35,3 +50,14 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       component: 'signup'
     });
 }
+
+var mustBeLoggedIn = function ($q, $cookies, $location) {
+  var deferred = $q.defer();
+
+  if ($cookies.get('token')) {
+    deferred.resolve();
+  } else {
+    deferred.reject();
+    $location.url('/login');
+  }
+};
