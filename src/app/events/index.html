@@ -3,7 +3,7 @@
 </div>
 <div ng-repeat="event in events">
     <div as-card as-m-b="4" class="event">
-        <div class="row main">
+        <div class="row main" ng-click="goToEvent(event.id)">
             <div class="picture" style="background: url({{event.image}}); background-size: cover; border-top-left-radius: 4px">
             </div>
             <div as-p-xy="4" class="info">
@@ -15,15 +15,38 @@
         </div>
 
         <div class="bottom-card-tabs row">
-            <div class="bottom-card-tab col-xs-4" as-p-y="2">
-                <span as-f="s bold">Yes</span>
+            <div ng-if="event.response === 'yes'">
+                <div class="bottom-card-tab col-xs-4 selected" as-p-y="2">
+                    <span as-f="s bold">Yes</span>
+                </div>
             </div>
-            <div class="bottom-card-tab col-xs-4" as-p-y="2">
-                <span as-f="s bold">Maybe</span>
+            <div ng-if="event.response !== 'yes'">
+                <div class="bottom-card-tab col-xs-4" as-p-y="2" ng-click="updateResponse(event.id, 'yes')">
+                    <span as-f="s bold">Yes</span>
+                </div>
             </div>
-            <div class="bottom-card-tab col-xs-4" as-p-y="2">
-                <span as-f="s bold">No</span>
+            <div ng-if="event.response === 'maybe'">
+                <div class="bottom-card-tab col-xs-4 selected" as-p-y="2">
+                    <span as-f="s bold">Maybe</span>
+                </div>
             </div>
+            <div ng-if="event.response !== 'maybe'">
+                <div class="bottom-card-tab col-xs-4" as-p-y="2" ng-click="updateResponse(event.id, 'maybe')">
+                    <span as-f="s bold">Maybe</span>
+                </div>
+            </div>
+            <div ng-if="event.response === 'no'">
+                <div class="bottom-card-tab col-xs-4 selected" as-p-y="2">
+                    <span as-f="s bold">No</span>
+                </div>
+            </div>
+            <div ng-if="event.response !== 'no'">
+                <div class="bottom-card-tab col-xs-4" as-p-y="2" ng-click="updateResponse(event.id, 'no')">
+                    <span as-f="s bold">No</span>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>

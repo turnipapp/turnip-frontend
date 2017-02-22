@@ -7,9 +7,9 @@
     color: #ACADAD;
     border-right: 1px solid #EEEFF3;
 }
-.bottom-card-tab:last-child {
-    border-right: 0px solid #fff;
-}
+/*.bottom-card-tab:last-child {
+    border-left: 0px solid #fff;
+}*/
 .event .picture {
     width: 200px;
     height: 100px;
@@ -21,4 +21,7 @@
 }
 .event .main {
     margin: 0;
+}
+.event .selected {
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.1);
 }
