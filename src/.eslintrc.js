@@ -5,7 +5,7 @@ module.exports = {
   rules: {
     'angular/no-service-method': 0,
     'angular/log': 0,
-    'angular/window-service': 0,
-    'linebreak-style': ["error", "windows"]
+    'angular/window-service': 0
+    // 'linebreak-style': ["error", "windows", "unix"]
   }
 }

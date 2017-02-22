@@ -17,6 +17,7 @@ var routesConfig = require('./routes');
 require('./style/bootstrap-layout.css');
 require('./style/index.css');
 require('./style/header.css');
+require('./style/events.css');
 
 var app = 'app';
 module.exports = app;

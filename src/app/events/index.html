@@ -1,1 +1,47 @@
-{{hello}}
+<div as-m-b="2">
+    <div as-f="s bold">Invites</div>
+</div>
+<div ng-repeat="event in events">
+    <div as-card as-m-b="4" class="event">
+        <div class="row main">
+            <div class="picture" style="background: url({{event.image}}); background-size: cover; border-top-left-radius: 4px">
+            </div>
+            <div as-p-xy="4" class="info">
+                <div as-f="m bold">{{event.title}}</div>
+                <div as-f="s normal">{{event.address}}</div>
+                <div as-f="s normal">{{event.date}}</div>
+                <div as-f="s normal">{{event.time}}</div>
+            </div>
+        </div>
+
+        <div class="bottom-card-tabs row">
+            <div class="bottom-card-tab col-xs-4" as-p-y="2">
+                <span as-f="s bold">Yes</span>
+            </div>
+            <div class="bottom-card-tab col-xs-4" as-p-y="2">
+                <span as-f="s bold">Maybe</span>
+            </div>
+            <div class="bottom-card-tab col-xs-4" as-p-y="2">
+                <span as-f="s bold">No</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div as-m-b="2">
+    <div as-f="s bold">Past Events</div>
+</div>
+<div ng-repeat="event in events">
+    <div as-card as-m-b="4" class="event">
+        <div class="row main">
+            <div class="picture" style="background: url({{event.image}}); background-size: cover; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+            </div>
+            <div as-p-xy="4" class="info">
+                <div as-f="m bold">{{event.title}}</div>
+                <div as-f="s normal">{{event.address}}</div>
+                <div as-f="s normal">{{event.date}}</div>
+                <div as-f="s normal">{{event.time}}</div>
+            </div>
+        </div>
+    </div>
+</div>
