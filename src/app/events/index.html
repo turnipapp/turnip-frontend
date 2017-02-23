@@ -4,9 +4,9 @@
 <div ng-repeat="event in events">
     <div as-card as-m-b="4" class="event">
         <div class="row main" ng-click="goToEvent(event.id)">
-            <div class="picture" style="background: url({{event.image}}); background-size: cover; border-top-left-radius: 4px">
+            <div class="picture col-sm-3" style="background: url({{event.image}}); background-size: cover; border-top-left-radius: 4px; background-position: center center">
             </div>
-            <div as-p-xy="4" class="info">
+            <div as-p-xy="4" class="info col-sm-9">
                 <div as-f="m bold">{{event.title}}</div>
                 <div as-f="s normal">{{event.address}}</div>
                 <div as-f="s normal">{{event.date}}</div>
@@ -57,9 +57,9 @@
 <div ng-repeat="event in events">
     <div as-card as-m-b="4" class="event">
         <div class="row main">
-            <div class="picture" style="background: url({{event.image}}); background-size: cover; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+            <div class="picture col-sm-3" style="background: url({{event.image}}); background-size: cover; border-top-left-radius: 4px; border-bottom-left-radius: 4px; background-position: center center">
             </div>
-            <div as-p-xy="4" class="info">
+            <div as-p-xy="4" class="info col-sm-9">
                 <div as-f="m bold">{{event.title}}</div>
                 <div as-f="s normal">{{event.address}}</div>
                 <div as-f="s normal">{{event.date}}</div>

@@ -11,14 +11,12 @@
     border-left: 0px solid #fff;
 }*/
 .event .picture {
-    width: 200px;
     height: 100px;
-    float: left;
 }
-.event .info {
+/*.event .info {
     width: calc(100% - 200px);
     float: right;
-}
+}*/
 .event .main {
     margin: 0;
 }
