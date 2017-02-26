@@ -1,6 +1,10 @@
 {
+  "name": "turnip-frontend",
+  "version": "0.0.0",
+  "description": "Turnip frontend angular app",
+  "author": "Cole Johnson",
   "dependencies": {
-    "angular": "^1.5.0",
+    "angular": "1.5.7",
     "angular-cookies": "^1.6.2",
     "angular-ui-router": "1.0.0-beta.1"
   },
