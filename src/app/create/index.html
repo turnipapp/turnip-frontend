@@ -1,0 +1,62 @@
+<div class="max-width" as-p-t="4">
+    <div as-card as-p-xy="4">
+        <div as-m-b="2">
+            <span as-f="l bold">Create an event</span>
+        </div>
+        <input as-i-text placeholder="Event name" as-m-y="2" ng-model="name"/>
+        <input as-i-text placeholder="Event location" as-m-y="2" ng-model="location"/>
+        <div class="row text-center" as-p-y="2">
+            <div class="col-md-6 no-margin" as-m-l="-4">
+                <div class="row">
+                    <div class="col-xs-6 no-margin">
+                        <md-datepicker ng-model="dateFrom" md-placeholder="Date From"></md-datepicker>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="row" style="width: 160px">
+                            <div class="col-xs-4 no-margin">
+                                <input as-i-text placeholder="12" ng-model="timeFrom.hours" maxlength="2"/> :
+                            </div>
+                            <div class="col-xs-4 no-margin">
+                                <input as-i-text placeholder="00" ng-model="timeFrom.minutes" maxlength="2"/>
+                            </div>
+                            <div class="col-xs-4 no-margin">
+                                <select ng-model="timeFrom.twelve">
+                                    <option value="am">am</option>
+                                    <option value="pm">pm</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 no-margin" as-m-l="-4">
+                <div class="row">
+                    <div class="col-xs-6 no-margin">
+                        <md-datepicker ng-model="dateTo" md-placeholder="Date To"></md-datepicker>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="row" style="width: 160px">
+                            <div class="col-xs-4 no-margin">
+                                <input as-i-text placeholder="12" ng-model="timeTo.hours" maxlength="2"/> :
+                            </div>
+                            <div class="col-xs-4 no-margin">
+                                <input as-i-text placeholder="00" ng-model="timeTo.minutes" maxlength="2"/>
+                            </div>
+                            <div class="col-xs-4 no-margin">
+                                <select ng-model="timeTo.twelve">
+                                    <option value="am">am</option>
+                                    <option value="pm">pm</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button as-i-button as-m-y="2" ng-click="create()">Create Event</button>
+    </div>
+    <div as-m-t="2">
+        <span as-f="s normal">{{message}}</span>
+    </div>
+</div>

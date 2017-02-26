@@ -30,5 +30,9 @@ module.exports = {
     }
 
     setSelectedClass($location.url());
+
+    $scope.createEvent = function () {
+      $location.path('/create');
+    };
   }
 };

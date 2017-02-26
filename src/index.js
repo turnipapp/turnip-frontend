@@ -1,7 +1,7 @@
-var angular = require('angular');
 require('./dependencies/as');
 require('angular-cookies');
 
+var create = require('./app/create/create');
 var dashboard = require('./app/dashboard/dashboard');
 var eventReq = require('./app/event/event');
 var events = require('./app/events/events');
@@ -18,15 +18,17 @@ require('./style/bootstrap-layout.css');
 require('./style/index.css');
 require('./style/header.css');
 require('./style/events.css');
+require('./style/create.css');
 
 var app = 'app';
 module.exports = app;
 
 angular
-  .module(app, ['ui.router', 'angularStyle', 'ngCookies'])
+  .module(app, ['ui.router', 'angularStyle', 'ngCookies', 'ngMaterial'])
   .constant('API', {url: 'http://localhost:5000/'})
   .config(routesConfig)
   .component('app', hello)
+  .component('create', create)
   .component('dashboard', dashboard)
   .component('event', eventReq)
   .component('events', events)

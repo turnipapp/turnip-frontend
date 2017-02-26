@@ -13,6 +13,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         user: mustBeLoggedIn
       }
     })
+    .state('create', {
+      url: '/create',
+      component: 'create',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
     .state('dashboard.events', {
       url: 'events',
       component: 'events',
