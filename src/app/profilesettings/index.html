@@ -1,0 +1,26 @@
+<span as-f="l normal">Your Info</span>
+<div class="row">
+  <div class="col-xs-6 no-margin">
+    <p>First Name</p>
+    <input as-i-text ng-model="userData.firstName"/>
+  </div>
+  <div class="col-xs-6 no-margin">
+    <p>Last Name</p>
+    <input as-i-text ng-model="userData.lastName"/>
+  </div>
+  <div class="col-xs-8 no-margin">
+    <p>Email</p>
+    <input as-i-text ng-model="userData.email"/>
+  </div>
+</div>
+<div as-m-t="4">
+  <span as-f="l normal">Update Password</span>
+</div>
+<p>Current Password</p>
+<input as-i-text/>
+<p>New Password</p>
+<input as-i-text/>
+<p>Confirm New Password</p>
+<input as-i-text/>
+<button as-i-button ng-click="update()" as-m-t="4">Update</button>
+{{success}}

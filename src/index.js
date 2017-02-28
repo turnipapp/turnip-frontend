@@ -10,6 +10,8 @@ var login = require('./app/login/login');
 var map = require('./app/map/map');
 var profile = require('./app/profile/profile');
 var signup = require('./app/signup/signup');
+var profilesettings = require('./app/profilesettings/profilesettings');
+var myprofile = require('./app/myprofile/myprofile');
 
 require('angular-ui-router');
 var routesConfig = require('./routes');
@@ -35,4 +37,6 @@ angular
   .component('login', login)
   .component('map', map)
   .component('profile', profile)
-  .component('signup', signup);
+  .component('signup', signup)
+  .component('profilesettings', profilesettings)
+  .component('myprofile', myprofile);
