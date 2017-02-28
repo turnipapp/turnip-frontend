@@ -1,15 +1,17 @@
-<div class="nav">
-  <div ui-sref="dashboard.profile">
-      <span as-f="s bold">My Profile</span>
-  </div>
-  <div ui-sref=".profilesettings">
-      <span as-f="s bold">Profile Settings</span>
-  </div>
-  <div ng-click="logout()">
-      <span as-f="s bold">Profile Logout</span>
+<div class="col-xs-2">
+  <div class="nav">
+    <div ui-sref="dashboard.profile">
+        <span as-f="s bold">My Profile</span>
+    </div>
+    <div ui-sref=".profilesettings">
+        <span as-f="s bold">Profile Settings</span>
+    </div>
+    <div ng-click="logout()">
+        <span as-f="s bold">Profile Logout</span>
+    </div>
   </div>
 </div>
 
-<div as-p-xy="4">
+<div class="col-xs-10">
     <div ui-view ></div>
 </div>
