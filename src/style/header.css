@@ -1,12 +1,15 @@
 header {
     width: 100%;
-    background: #fff;
+    background: #F2BECE;
     text-align: center;
     margin: 0;
+    color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 .nav-item {
-    color: #ACADAD;
+    color: #FFF;
+    outline: none;
 }
 .nav-item.selected {
-    border-bottom: 2px solid #4078E5;
+    border-bottom: 2px solid #ED9DBB;
 }

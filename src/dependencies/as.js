@@ -299,18 +299,19 @@ angular.module('angularStyle', [])
         'padding': '12px 8px',
         'font-size': '11px',
         'color': '#fff',
-        'background': '#528BFD',
-        'border': 'none'
+        'background': '#ED9DBB',
+        'border': 'none',
+        'border-bottom': '2px solid #D48CA7'
       });
       element.on('mouseenter', function () {
         element.css({
-          background: '#487BE3',
+          background: '#D48CA7',
           cursor: 'pointer'
         });
       });
       element.on('mouseleave', function () {
         element.css({
-          'background': '#528BFD',
+          'background': '#ED9DBB',
           'box-shadow': 'none'
         });
       });
