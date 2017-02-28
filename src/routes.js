@@ -4,6 +4,7 @@ module.exports = routesConfig;
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
   $urlRouterProvider.otherwise('/events');
+  $urlRouterProvider.when('/profile', '/profile/myprofile');
 
   $stateProvider
     .state('dashboard', {
@@ -30,6 +31,20 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('dashboard.profile', {
       url: 'profile',
       component: 'profile',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
+    .state('dashboard.profile.profilesettings', {
+      url: '/settings',
+      component: 'profilesettings',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
+    .state('dashboard.profile.myprofile', {
+      url: '/myprofile',
+      component: 'myprofile',
       resolve: {
         user: mustBeLoggedIn
       }
