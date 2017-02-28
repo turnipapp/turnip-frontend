@@ -5,6 +5,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
   $urlRouterProvider.otherwise('/events');
   $urlRouterProvider.when('/profile', '/profile/myprofile');
+  $urlRouterProvider.when('/event/:id', '/event/:id/discussion');
 
   $stateProvider
     .state('dashboard', {
@@ -59,6 +60,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('event.map', {
       url: '/map',
       component: 'map',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
+    .state('event.discussion', {
+      url: '/discussion',
+      component: 'discussion',
       resolve: {
         user: mustBeLoggedIn
       }
