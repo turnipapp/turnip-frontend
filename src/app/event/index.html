@@ -7,10 +7,13 @@
         </div>
         <div class="col-sm-8">
             <div class="max-width">
-                <div class="col-xs-6 nav-item" ui-sref=".discussion({id: id})" as-p-y="4" ng-class="discussionSelected" ng-click="setSelectedClass('/discussion')">
+                <div class="col-xs-4 nav-item" ui-sref="dashboard" as-p-y="4">
+                    <span as-f="s bold">Events</span>
+                </div>
+                <div class="col-xs-4 nav-item" ui-sref=".discussion({id: id})" as-p-y="4" ng-class="discussionSelected" ng-click="setSelectedClass('/discussion')">
                     <span as-f="s bold">Discussion</span>
                 </div>
-                <div class="col-xs-6 nav-item" ui-sref=".map({id: id})" as-p-y="4" ng-class="mapSelected" ng-click="setSelectedClass('/map')">
+                <div class="col-xs-4 nav-item" ui-sref=".map({id: id})" as-p-y="4" ng-class="mapSelected" ng-click="setSelectedClass('/map')">
                     <span as-f="s bold">Map</span>
                 </div>
             </div>
