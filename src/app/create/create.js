@@ -1,6 +1,34 @@
 module.exports = {
   template: require('./index.html'),
-  controller: function ($scope, $http, $cookies, $location) {
+  controller: function ($scope, $http, $cookies, $location, $rootScope) {
+    $scope.invites = [];
+
+    $scope.addPerson = function () {
+      if (validateEmail($scope.invite)) {
+        $scope.invites.unshift({email: $scope.invite});
+        $http.get($rootScope.url + 'person/' + $scope.invite, {headers: {token: $cookies.get('token')}}).then(function (res) {
+          var name;
+          if (res.data.success) {
+            name = res.data.name;
+          } else {
+            name = 'Requires Invite';
+          }
+
+          for (var i = 0; i < $scope.invites.length; i++) {
+            if ($scope.invites[i].email === $scope.invite) {
+              $scope.invites[i].name = name;
+            }
+          }
+        });
+      } else {
+        $scope.message = "Not a valid email";
+      }
+    };
+
+    function validateEmail(email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
     $scope.create = function () {
       try {
         if (angular.isUndefined($scope.name)) {
