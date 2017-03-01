@@ -51,8 +51,21 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+        </div>
+        <span as-f="l normal">Invite People</span>
+        <div class="row">
+          <div class="col-sm-8 no-margin">
+            <input as-i-text placeholder="Enter email" ng-model="invite"/>
+          </div>
+          <div class="col-sm-4 no-margin">
+            <button as-i-button-good ng-click="addPerson()">Invite</button>
+          </div>
+        </div>
+        <div as-m-y="2">
+          <div ng-repeat="i in invites">
+            {{i.email}} - {{i.name}}
+          </div>
         </div>
         <button as-i-button as-m-y="2" ng-click="create()">Create Event</button>
     </div>
