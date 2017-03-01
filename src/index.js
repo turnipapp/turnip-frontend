@@ -12,6 +12,7 @@ var profile = require('./app/profile/profile');
 var signup = require('./app/signup/signup');
 var profilesettings = require('./app/profilesettings/profilesettings');
 var myprofile = require('./app/myprofile/myprofile');
+var discussion = require('./app/discussion/discussion');
 
 require('angular-ui-router');
 var routesConfig = require('./routes');
@@ -36,6 +37,7 @@ angular
   .component('events', events)
   .component('login', login)
   .component('map', map)
+  .component('discussion', discussion)
   .component('profile', profile)
   .component('signup', signup)
   .component('profilesettings', profilesettings)
