@@ -4,6 +4,17 @@
             <span as-f="l bold">Create an event</span>
         </div>
         <input as-i-text placeholder="Event name" as-m-y="2" ng-model="name"/>
+        <span as-f="l normal">Choose a theme</span>
+        <div class="themes" as-m-t="2">
+            <div ng-if="themes.length !== 0">
+                <div ng-repeat="theme in themes">
+                    <div ng-click="chooseTheme(theme)" class="theme-preview col-sm-4" style="background: url({{theme.small}}); background-position: center center; background-size: cover"></div>
+                </div>
+            </div>
+        </div>
+        <div as-m-y=2 ng-if="theme">
+            Theme: {{theme.name}}
+        </div>
         <input as-i-text placeholder="Event location" as-m-y="2" ng-model="location"/>
         <div class="row text-center" as-p-y="2">
             <div class="col-md-6 no-margin" as-m-l="-4">
@@ -54,18 +65,27 @@
             </div>
         </div>
         <span as-f="l normal">Invite People</span>
-        <div class="row">
-          <div class="col-sm-8 no-margin">
-            <input as-i-text placeholder="Enter email" ng-model="invite"/>
-          </div>
-          <div class="col-sm-4 no-margin">
-            <button as-i-button-good ng-click="addPerson()">Invite</button>
-          </div>
+        <div class="row" as-m-t="2">
+            <div class="col-sm-8 no-margin" as-p-r="2">
+                <input as-i-text placeholder="Enter email" ng-model="invite"/>
+            </div>
+            <div class="col-sm-4 no-margin" as-p-l="2">
+                <button as-i-button-good ng-click="addPerson()">Invite</button>
+            </div>
         </div>
         <div as-m-y="2">
-          <div ng-repeat="i in invites">
-            {{i.email}} - {{i.name}}
-          </div>
+            <span as-f="m normal" ng-if="invites.length > 0">Invites</span>
+            <div ng-repeat="i in invites">
+                <div class="invite row">
+                    <div class="col-xs-8 no-margin">
+                        {{i.email}} - {{i.name}}
+                    </div>
+                    <div class="col-xs-4 no-margin">
+                        <div ng-click="removePerson(i.id)">Uninvite</div>
+                    </div>
+
+                </div>
+            </div>
         </div>
         <button as-i-button as-m-y="2" ng-click="create()">Create Event</button>
     </div>

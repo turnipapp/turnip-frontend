@@ -277,7 +277,7 @@ angular.module('angularStyle', [])
     restrict: 'A',
     link: function (scope, element) {
       element.css({
-        'width': 'calc(100% - 16px)',
+        'width': '100%',
         'border-radius': '4px',
         'outline': 'none',
         'border': '1px solid #F4F5F7',
@@ -330,7 +330,8 @@ angular.module('angularStyle', [])
         'font-size': '11px',
         'color': '#fff',
         'background': '#15CD72',
-        'border': 'none'
+        'border': 'none',
+        'border-bottom': '2px solid #0CB863'
       });
       element.on('mouseenter', function () {
         element.css({
