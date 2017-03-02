@@ -16,7 +16,7 @@ module.exports = {
     $scope.addPerson = function () {
       if (validateEmail($scope.invite)) {
         $scope.invites.unshift({email: $scope.invite});
-        $http.get('http://localhost:5000/user/' + $scope.invite, {headers: {token: $cookies.get('token')}}).then(function (res) {
+        $http.get('http://localhost:5000/user/email/' + $scope.invite, {headers: {token: $cookies.get('token')}}).then(function (res) {
           for (var i = 0; i < $scope.invites.length; i++) {
             if ($scope.invites[i].email === $scope.invite) {
               $scope.invites[i] = res.data;

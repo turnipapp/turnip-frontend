@@ -4,6 +4,20 @@
 <div class="event-header">
     <div class="img" style="background: url({{image}}); background-position: center center; background-size: cover"></div>
     <div class="info" as-p-xy="4">
-        <span as-f="l bold">{{event.title}}</span>
+        <div class="row">
+            <div class="col-sm-6 no-margin">
+                <span as-f="l bold">{{event.title}}</span>
+            </div>
+            <div class="col-sm-6 no-margin text-right" as-p-t="2">
+                <span as-f="s normal">{{event.dateStart | date:'MMM d, yyyy'}} | </span>
+                <span as-f="s normal">Hosted by: {{host.name}}</span>
+            </div>
+        </div>
+        <!-- <span>{{event}}</span> -->
     </div>
+</div>
+
+<div class="new-post" as-m-t="4">
+    <textarea ng-model="newPostContent" placeholder="Share something..."></textarea>
+    <button ng-click="newPost()">Post</button>
 </div>

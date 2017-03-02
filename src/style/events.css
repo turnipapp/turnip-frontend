@@ -1,3 +1,4 @@
+
 .bottom-card-tabs {
     border-top: 1px solid #EEEFF3;
     margin: 0;
@@ -19,6 +20,7 @@
 }*/
 .event .main {
     margin: 0;
+    outline: none;
 }
 .event .selected {
     box-shadow: inset 0px 0px 10px rgba(0,0,0,0.1);
