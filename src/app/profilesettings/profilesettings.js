@@ -7,7 +7,6 @@ module.exports = {
       }
     }).then(function (res) {
       if (res.data.success) {
-        console.log(res.data);
         $scope.userData = res.data;
       }
     });
@@ -19,7 +18,6 @@ module.exports = {
       }).then(function (res) {
         if (res.data.success) {
           $scope.success = "Success";
-          console.log(res.data);
         }
       });
     };
