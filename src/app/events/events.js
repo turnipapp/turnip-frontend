@@ -23,6 +23,12 @@ module.exports = {
       }
     ];
 
+    $http.get('http://localhost:5000/themes', {headers: {token: $cookies.get('token')}}).then(function (res) {
+      if (res.data.success) {
+        $scope.themes = res.data.themes;
+      }
+    });
+
     $http.get('http://localhost:5000/events/past', {headers: {token: $cookies.get('token')}}).then(function (res) {
       if (res.data.success) {
         $scope.past = res.data.past;
