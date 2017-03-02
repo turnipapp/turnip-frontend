@@ -23,6 +23,18 @@ module.exports = {
       }
     ];
 
+    $http.get('http://localhost:5000/events/past', {headers: {token: $cookies.get('token')}}).then(function (res) {
+      if (res.data.success) {
+        $scope.past = res.data.past;
+      }
+    });
+
+    $http.get('http://localhost:5000/events/upcoming', {headers: {token: $cookies.get('token')}}).then(function (res) {
+      if (res.data.success) {
+        $scope.upcoming = res.data.upcoming;
+      }
+    });
+
     $scope.updateResponse = function (id, response) {
       if (response === 'yes' || response === 'no' || response === 'maybe') {
         var token = $cookies.get('token');

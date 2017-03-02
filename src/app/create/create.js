@@ -1,34 +1,50 @@
 module.exports = {
   template: require('./index.html'),
-  controller: function ($scope, $http, $cookies, $location, $rootScope) {
+  controller: function ($scope, $http, $cookies, $location) {
+    $http.get('http://localhost:5000/themes', {headers: {token: $cookies.get('token')}}).then(function (res) {
+      if (res.data.success) {
+        $scope.themes = res.data.themes;
+      }
+    });
+
     $scope.invites = [];
+
+    $scope.chooseTheme = function (theme) {
+      $scope.theme = theme;
+    };
 
     $scope.addPerson = function () {
       if (validateEmail($scope.invite)) {
         $scope.invites.unshift({email: $scope.invite});
-        $http.get($rootScope.url + 'person/' + $scope.invite, {headers: {token: $cookies.get('token')}}).then(function (res) {
-          var name;
-          if (res.data.success) {
-            name = res.data.name;
-          } else {
-            name = 'Requires Invite';
-          }
-
+        $http.get('http://localhost:5000/user/' + $scope.invite, {headers: {token: $cookies.get('token')}}).then(function (res) {
           for (var i = 0; i < $scope.invites.length; i++) {
             if ($scope.invites[i].email === $scope.invite) {
-              $scope.invites[i].name = name;
+              $scope.invites[i] = res.data;
             }
           }
+          $scope.invite = '';
         });
       } else {
         $scope.message = "Not a valid email";
       }
     };
 
+    $scope.removePerson = function (id) {
+      var index;
+      for (var i = 0; i < $scope.invites.length; i++) {
+        if ($scope.invites[i].id === id) {
+          index = i;
+          break;
+        }
+      }
+      $scope.invites.splice(index, 1);
+    };
+
     function validateEmail(email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     }
+
     $scope.create = function () {
       try {
         if (angular.isUndefined($scope.name)) {
@@ -79,10 +95,12 @@ module.exports = {
             title: $scope.name,
             location: $scope.location,
             dateStart: dateStart,
-            dateEnd: dateEnd
+            dateEnd: dateEnd,
+            theme: $scope.theme.id,
+            invites: $scope.invites
           };
 
-          $http.post('http://localhost:5000/create', obj, {headers: {token: $cookies.get('token')}}).then(function (res) {
+          $http.post('http://localhost:5000/event', obj, {headers: {token: $cookies.get('token')}}).then(function (res) {
             if (res.data.success) {
               $location.path('/event/' + res.data.eventId);
             }
