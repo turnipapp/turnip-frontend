@@ -22,6 +22,7 @@ require('./style/index.css');
 require('./style/header.css');
 require('./style/events.css');
 require('./style/create.css');
+require('./style/event.css');
 
 var app = 'app';
 module.exports = app;
