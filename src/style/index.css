@@ -1,10 +1,10 @@
-body {
-    /*background-color: #F4F4F4;*/
-    /*background-color: #fff;*/
+body, html {
     background-color: #F3F0E7;
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     outline: none;
+    display:block;
+    overflow:auto;
 }
 .max-width {
     max-width: 960px;
