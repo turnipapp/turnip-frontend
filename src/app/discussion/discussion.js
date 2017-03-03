@@ -13,7 +13,6 @@ module.exports = {
 
       $http.get('http://localhost:5000/user/id/' + $scope.event.owner, {headers: {token: $cookies.get('token')}}).then(function (res) {
         $scope.host = res.data;
-        console.log($scope.host);
       });
     });
 
