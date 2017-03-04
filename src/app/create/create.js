@@ -1,6 +1,16 @@
 module.exports = {
   template: require('./index.html'),
   controller: function ($scope, $http, $cookies, $location) {
+    $scope.name = "Event Name";
+    $scope.location = "434 N Grant St";
+    $scope.timeFrom = {};
+    $scope.timeFrom.hours = "12";
+    $scope.timeFrom.minutes = "00";
+    $scope.timeFrom.twelve = "am";
+    $scope.timeTo = {};
+    $scope.timeTo.hours = "12";
+    $scope.timeTo.minutes = "00";
+    $scope.timeTo.twelve = "pm";
     $http.get('http://localhost:5000/themes', {headers: {token: $cookies.get('token')}}).then(function (res) {
       if (res.data.success) {
         $scope.themes = res.data.themes;
