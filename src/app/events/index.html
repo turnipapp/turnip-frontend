@@ -59,6 +59,11 @@
 <div as-m-b="2">
     <div as-f="s bold">Past Events</div>
 </div>
+<div ng-if="past.length == 0">
+    <div class="text-center" as-m-t="4">
+        <span as-f="s bold"><span as-f-c="mono">You have no past events.</span></span>
+    </div>
+</div>
 <div ng-repeat="event in past">
     <div as-card as-m-b="4" class="event" ng-click="goToEvent(event._id)">
         <div class="row main">
