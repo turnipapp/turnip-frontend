@@ -8,63 +8,63 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.when('/event/:id', '/event/:id/discussion');
 
   $stateProvider
-    .state('dashboard', {
+    .state('app', {
       url: '/',
       component: 'dashboard',
       resolve: {
         user: mustBeLoggedIn
       }
     })
-    .state('dashboard.create', {
+    .state('app.create', {
       url: 'create',
       component: 'create',
       resolve: {
         user: mustBeLoggedIn
       }
     })
-    .state('dashboard.events', {
+    .state('app.events', {
       url: 'events',
       component: 'events',
       resolve: {
         user: mustBeLoggedIn
       }
     })
-    .state('dashboard.profile', {
+    .state('app.profile', {
       url: 'profile',
       component: 'profile',
       resolve: {
         user: mustBeLoggedIn
       }
     })
-    .state('dashboard.profile.profilesettings', {
+    .state('app.profile.profilesettings', {
       url: '/settings',
       component: 'profilesettings',
       resolve: {
         user: mustBeLoggedIn
       }
     })
-    .state('dashboard.profile.myprofile', {
+    .state('app.profile.myprofile', {
       url: '/myprofile',
       component: 'myprofile',
       resolve: {
         user: mustBeLoggedIn
       }
     })
-    .state('event', {
-      url: '/event/:id',
+    .state('app.event', {
+      url: 'event/:id',
       component: 'event',
       resolve: {
         user: mustBeLoggedIn
       }
     })
-    .state('event.map', {
+    .state('app.event.map', {
       url: '/map',
       component: 'map',
       resolve: {
         user: mustBeLoggedIn
       }
     })
-    .state('event.discussion', {
+    .state('app.event.discussion', {
       url: '/discussion',
       component: 'discussion',
       resolve: {

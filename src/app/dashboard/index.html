@@ -3,7 +3,7 @@
         <img src="http://i.imgur.com/HWqHIXd.png" width="22px" height="auto"/>
     </div>
     <nav>
-        <div class="nav-item" ui-sref=".events" ng-class="eventSelected" ng-click="setSelectedClass('/event')">
+        <div class="nav-item" ui-sref=".events" ng-class="eventSelected" ng-click="setSelectedClass('/events')">
             Events
         </div>
         <div class="nav-item" ui-sref=".feed" ng-class="feedSelected" ng-click="setSelectedClass('/feed')">
@@ -15,39 +15,6 @@
         <div class="nav-item" ui-sref=".create" ng-class="createSelected" ng-click="setSelectedClass('/create')">
             Create Event
         </div>
-        <!-- <div class="nav-item">
-            <div class="create-button">
-                <button as-click="createEvent()">Create Event</button>
-            </div>
-        </div> -->
     </nav>
-    <!-- <div class="row">
-        <div class="col-sm-2">
-            <div as-m-t="3">
-                <img src="http://i.imgur.com/HWqHIXd.png" width="22px" height="auto"/>
-            </div>
-        </div>
-        <div class="col-sm-8">
-            <div class="max-width">
-                <div class="col-xs-4 nav-item" ui-sref=".events" as-p-y="4" ng-class="eventSelected" ng-click="setSelectedClass('/event')">
-                    </i><span as-f="s bold">Events</span>
-                </div>
-                <div class="col-xs-4 nav-item" ui-sref=".feed" as-p-y="4" ng-class="feedSelected" ng-click="setSelectedClass('/feed')">
-                    <span as-f="s bold">Feed</span>
-                </div>
-                <div class="col-xs-4 nav-item" ui-sref=".profile" as-p-y="4" ng-class="profileSelected" ng-click="setSelectedClass('/profile')">
-                    <span as-f="s bold">Profile</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div as-m-t="2" ng-click="createEvent()">
-                <button as-i-button>Create Event</button>
-            </div>
-        </div>
-    </div> -->
 </header>
-
-<div class="max-width" as-p-xy="4">
-    <div ui-view ></div>
-</div>
+<div ui-view ></div>

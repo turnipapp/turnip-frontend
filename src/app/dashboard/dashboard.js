@@ -3,10 +3,10 @@ module.exports = {
   controller: function ($scope, $location) {
     $scope.hello = 'Hello Dashboard!';
 
-    $scope.eventSelected = 'selected';
-    $scope.feedSelected = '';
-    $scope.profileSelected = '';
-    $scope.createSelected = '';
+    // $scope.eventSelected = 'selected';
+    // $scope.feedSelected = '';
+    // $scope.profileSelected = '';
+    // $scope.createSelected = '';
 
     $scope.setSelectedClass = function (tab) {
       setSelectedClass(tab);
@@ -14,7 +14,7 @@ module.exports = {
 
     function setSelectedClass(tab) {
       console.log(tab);
-      if (tab === '/event') {
+      if (tab === '/events') {
         $scope.eventSelected = 'selected';
         $scope.feedSelected = '';
         $scope.profileSelected = '';
@@ -35,7 +35,11 @@ module.exports = {
         $scope.profileSelected = '';
         $scope.createSelected = 'selected';
       } else if (tab === '/') {
-        $location.path('event');
+        console.log("hi");
+        $scope.eventSelected = '';
+        $scope.feedSelected = '';
+        $scope.profileSelected = '';
+        $scope.createSelected = '';
       }
     }
 

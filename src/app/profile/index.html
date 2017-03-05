@@ -1,17 +1,20 @@
-<div class="col-xs-2">
-  <div class="nav">
-    <div ui-sref="dashboard.profile" as-m-b="2" >
-        <span as-f="s bold" class="link underline">My Profile</span>
+<div class="max-width">
+    <div as-m-t="4"></div>
+    <div class="col-xs-2">
+      <div class="nav">
+        <div ui-sref="dashboard.profile" as-m-b="2" >
+            <span as-f="s bold" class="link underline">My Profile</span>
+        </div>
+        <div ui-sref=".profilesettings" as-m-b="2" class="link">
+            <span as-f="s bold" class="link underline">Profile Settings</span>
+        </div>
+        <div ng-click="logout()" class="link">
+            <span as-f="s bold">Logout</span>
+        </div>
+      </div>
     </div>
-    <div ui-sref=".profilesettings" as-m-b="2" class="link">
-        <span as-f="s bold" class="link underline">Profile Settings</span>
-    </div>
-    <div ng-click="logout()" class="link">
-        <span as-f="s bold">Logout</span>
-    </div>
-  </div>
-</div>
 
-<div class="col-xs-10">
-    <div ui-view ></div>
+    <div class="col-xs-10">
+        <div ui-view ></div>
+    </div>
 </div>
