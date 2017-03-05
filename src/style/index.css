@@ -1,10 +1,12 @@
 body, html {
-    background-color: #F3F0E7;
+    /*background-color: #F3F0E7;*/
+    background-image: linear-gradient(180deg, #fdfbfb 0%, #ebedee 100%);
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     outline: none;
     display:block;
     overflow:auto;
+    color: #202020;
 }
 .max-width {
     max-width: 960px;

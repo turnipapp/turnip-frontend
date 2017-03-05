@@ -40,3 +40,24 @@
     background: #0CB863;
     border-bottom: 2px solid #15CD72;
 }
+.event-nav {
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    line-height: 40px;
+    z-index: 1;
+    color: #202020;
+}
+.event-nav-item-wrapper {
+    display: inline-block;
+}
+.event-nav-item {
+    float: left;
+    padding: 0 16px;
+    outline: none;
+}
+.event-nav-item.selected {
+    border-bottom: 2px solid #202020;
+}
