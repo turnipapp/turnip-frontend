@@ -1,80 +1,84 @@
-<div as-m-b="2">
-    <div as-f="s bold">Invites</div>
-</div>
-<div ng-if="upcoming.length == 0">
-    <div class="text-center">
-        You have no upcoming events
+<div class="max-width">
+    <div as-m-t="4"></div>
+    <div as-m-b="2">
+        <div as-f="s bold">Invites</div>
     </div>
-</div>
-<div ng-repeat="event in upcoming">
-    <div as-card as-m-b="4" class="event">
-        <div class="row main" ng-click="goToEvent(event._id)">
-            <div class="picture col-sm-3" style="background: url({{themes[event.theme].small}}); background-size: cover; border-top-left-radius: 4px; background-position: center center">
-            </div>
-            <div as-p-xy="4" class="info col-sm-9">
-                <div as-f="m bold">{{event.title}}</div>
-                <div as-f="s normal">{{event.location}}</div>
-                <div as-f="s normal">{{event.dateStart | date:'MMM d, yyyy'}}</div>
-                <div as-f="s normal">{{event.dateStart | date:'h:mm a'}} - {{event.dateEnd | date:'h:mm a'}}</div>
-            </div>
-        </div>
-
-        <div class="bottom-card-tabs row">
-            <div ng-if="event.response === 'yes'">
-                <div class="bottom-card-tab col-xs-4 selected" as-p-y="2">
-                    <span as-f="s bold">Yes</span>
-                </div>
-            </div>
-            <div ng-if="event.response !== 'yes'">
-                <div class="bottom-card-tab col-xs-4" as-p-y="2" ng-click="updateResponse(event.id, 'yes')">
-                    <span as-f="s bold">Yes</span>
-                </div>
-            </div>
-            <div ng-if="event.response === 'maybe'">
-                <div class="bottom-card-tab col-xs-4 selected" as-p-y="2">
-                    <span as-f="s bold">Maybe</span>
-                </div>
-            </div>
-            <div ng-if="event.response !== 'maybe'">
-                <div class="bottom-card-tab col-xs-4" as-p-y="2" ng-click="updateResponse(event.id, 'maybe')">
-                    <span as-f="s bold">Maybe</span>
-                </div>
-            </div>
-            <div ng-if="event.response === 'no'">
-                <div class="bottom-card-tab col-xs-4 selected" as-p-y="2">
-                    <span as-f="s bold">No</span>
-                </div>
-            </div>
-            <div ng-if="event.response !== 'no'">
-                <div class="bottom-card-tab col-xs-4" as-p-y="2" ng-click="updateResponse(event.id, 'no')">
-                    <span as-f="s bold">No</span>
-                </div>
-            </div>
-
-
+    <div ng-if="upcoming.length == 0">
+        <div class="text-center">
+            You have no upcoming events
         </div>
     </div>
-</div>
-
-<div as-m-b="2">
-    <div as-f="s bold">Past Events</div>
-</div>
-<div ng-if="past.length == 0">
-    <div class="text-center" as-m-t="4">
-        <span as-f="s bold"><span as-f-c="mono">You have no past events.</span></span>
-    </div>
-</div>
-<div ng-repeat="event in past">
-    <div as-card as-m-b="4" class="event" ng-click="goToEvent(event._id)">
-        <div class="row main">
-            <div class="picture col-sm-3" style="background: url({{themes[event.theme].small}}); background-size: cover; border-top-left-radius: 4px; border-bottom-left-radius: 4px; background-position: center center">
+    <div ng-repeat="event in upcoming">
+        <div as-card as-m-b="4" class="event">
+            <div class="row main" ng-click="goToEvent(event._id)">
+                <div class="picture col-sm-3" style="background: url({{themes[event.theme].small}}); background-size: cover; border-top-left-radius: 4px; background-position: center center">
+                </div>
+                <div as-p-xy="4" class="info col-sm-9">
+                    <div as-f="m bold">{{event.title}}</div>
+                    <div as-f="s normal">{{event.location}}</div>
+                    <div as-f="s normal">{{event.dateStart | date:'MMM d, yyyy'}}</div>
+                    <div as-f="s normal">{{event.dateStart | date:'h:mm a'}} - {{event.dateEnd | date:'h:mm a'}}</div>
+                </div>
             </div>
-            <div as-p-xy="4" class="info col-sm-9">
-                <div as-f="m bold">{{event.title}}</div>
-                <div as-f="s normal">{{event.location}}</div>
-                <div as-f="s normal">{{event.dateStart | date:'MMM d, yyyy'}}</div>
-                <div as-f="s normal">{{event.dateStart | date:'h:mm a'}} - {{event.dateEnd | date:'h:mm a'}}</div>
+
+            <div class="bottom-card-tabs row">
+                <div ng-if="event.response === 'yes'">
+                    <div class="bottom-card-tab col-xs-4 selected" as-p-y="2">
+                        <span as-f="s bold">Yes</span>
+                    </div>
+                </div>
+                <div ng-if="event.response !== 'yes'">
+                    <div class="bottom-card-tab col-xs-4" as-p-y="2" ng-click="updateResponse(event.id, 'yes')">
+                        <span as-f="s bold">Yes</span>
+                    </div>
+                </div>
+                <div ng-if="event.response === 'maybe'">
+                    <div class="bottom-card-tab col-xs-4 selected" as-p-y="2">
+                        <span as-f="s bold">Maybe</span>
+                    </div>
+                </div>
+                <div ng-if="event.response !== 'maybe'">
+                    <div class="bottom-card-tab col-xs-4" as-p-y="2" ng-click="updateResponse(event.id, 'maybe')">
+                        <span as-f="s bold">Maybe</span>
+                    </div>
+                </div>
+                <div ng-if="event.response === 'no'">
+                    <div class="bottom-card-tab col-xs-4 selected" as-p-y="2">
+                        <span as-f="s bold">No</span>
+                    </div>
+                </div>
+                <div ng-if="event.response !== 'no'">
+                    <div class="bottom-card-tab col-xs-4" as-p-y="2" ng-click="updateResponse(event.id, 'no')">
+                        <span as-f="s bold">No</span>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
+
+    <div as-m-b="2">
+        <div as-f="s bold">Past Events</div>
+    </div>
+    <div ng-if="past.length == 0">
+        <div class="text-center" as-m-t="4">
+            <span as-f="s bold"><span as-f-c="mono">You have no past events.</span></span>
+        </div>
+    </div>
+    <div ng-repeat="event in past">
+        <div as-card as-m-b="4" class="event" ng-click="goToEvent(event._id)">
+            <div class="row main">
+                <div class="picture col-sm-3" style="background: url({{themes[event.theme].small}}); background-size: cover; border-top-left-radius: 4px; border-bottom-left-radius: 4px; background-position: center center">
+                </div>
+                <div as-p-xy="4" class="info col-sm-9">
+                    <div as-f="m bold">{{event.title}}</div>
+                    <div as-f="s normal">{{event.location}}</div>
+                    <div as-f="s normal">{{event.dateStart | date:'MMM d, yyyy'}}</div>
+                    <div as-f="s normal">{{event.dateStart | date:'h:mm a'}} - {{event.dateEnd | date:'h:mm a'}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
