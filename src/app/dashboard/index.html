@@ -12,11 +12,14 @@
         <div class="nav-item" ui-sref=".profile" ng-class="profileSelected" ng-click="setSelectedClass('/profile')">
             Profile
         </div>
-        <div class="nav-item">
+        <div class="nav-item" ui-sref=".create" ng-class="createSelected" ng-click="setSelectedClass('/create')">
+            Create Event
+        </div>
+        <!-- <div class="nav-item">
             <div class="create-button">
                 <button as-click="createEvent()">Create Event</button>
             </div>
-        </div>
+        </div> -->
     </nav>
     <!-- <div class="row">
         <div class="col-sm-2">
