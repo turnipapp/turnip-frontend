@@ -40,7 +40,6 @@ module.exports = {
     $scope.newPost = function () {
       $http.get('http://localhost:5000/account', {headers: {token: $cookies.get('token')}}).then(function (res) {
         if (res.data.success) {
-          //TODO: Create add image section to post
           var images = [];
           var obj = {
             text: $scope.newPostContent,
