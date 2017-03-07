@@ -40,10 +40,13 @@ module.exports = {
     $scope.newPost = function () {
       $http.get('http://localhost:5000/account', {headers: {token: $cookies.get('token')}}).then(function (res) {
         if (res.data.success) {
+          //TODO: Create add image section to post
+          var images = [];
           var obj = {
             text: $scope.newPostContent,
             userId: res.data.id,
-            eventId: $scope.event._id
+            eventId: $scope.event._id,
+            images: images
           };
 
           $http.post('http://localhost:5000/posts/' + $scope.event._id, obj, {headers: {token: $cookies.get('token')}}).then(function (res) {
