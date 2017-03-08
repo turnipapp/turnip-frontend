@@ -124,16 +124,13 @@ module.exports = {
             invites: $scope.invites
           };
 
-          console.log(event);
-          console.log($location.path());
-
-          // $http.post('http://localhost:5000/event', event, {headers: {token: $cookies.get('token')}}).then(function (res) {
-          //   if (res.data.success) {
-          //     $location.path('/event/' + res.data.eventId);
-          //   } else {
-          //     $scope.message = res.data.message;
-          //   }
-          // });
+          $http.post('http://localhost:5000/event', event, {headers: {token: $cookies.get('token')}}).then(function (res) {
+            if (res.data.success) {
+              $location.path('/event/' + res.data.eventId);
+            } else {
+              $scope.message = res.data.message;
+            }
+          });
         }
       } catch (err) {
         $scope.message = 'Please enter all forms';
