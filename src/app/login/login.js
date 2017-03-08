@@ -11,7 +11,7 @@ module.exports = {
       $http.post(API.url + 'auth/login', login).then(function (res) {
         if (res.data.success) {
           $cookies.put('token', res.data.token);
-          $location.path('/');
+          $location.path('/events');
         } else {
           $scope.message = res.data.message;
         }

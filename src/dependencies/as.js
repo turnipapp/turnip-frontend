@@ -2,8 +2,8 @@ var config = {
   pixelMultiplier: 4,
   colors: {
     primary: {
-      light: '#ED9DBB',
-      dark: '#D48CA7'
+      light: '#29BCE6',
+      dark: '#008AC9'
     },
     good: {
       light: '#15CD72',
@@ -433,7 +433,7 @@ angular.module('angularStyle', [])
       element.addClass('as-input');
       var styles = [
         'width: 100%',
-        'border-radius: 4px',
+        'border-radius: 0px',
         'outline: none',
         'border: 2px solid ' + config.colors.light,
         'padding: 8px',
@@ -463,10 +463,12 @@ angular.module('angularStyle', [])
         'outline: none',
         'padding: 12px 8px',
         'font-size: 11px',
+        'font-weight: bold',
+        'text-transform: uppercase',
         'color: #fff',
         'background: ' + config.colors.primary.light,
         'border: none',
-        'border-bottom: 2px solid ' + config.colors.primary.dark
+        'border: 2px solid ' + config.colors.primary.dark
       ];
 
       var styleString = '';
@@ -544,8 +546,8 @@ angular.module('angularStyle', [])
       element.addClass('as-card');
       var styles = [
         'background: #fff',
-        'border-radius: 4px',
-        'box-shadow: 0 0 15px rgba(48, 48, 48, 0.1)'
+        'border-radius: 0px',
+        'box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12)'
       ];
 
       var styleString = '';

@@ -3,18 +3,18 @@
         <img src="http://i.imgur.com/HWqHIXd.png" width="22px" height="auto"/>
     </div>
     <nav>
-        <div class="nav-item" ui-sref=".events" ng-class="eventSelected" ng-click="setSelectedClass('/events')">
+        <div class="nav-item" ui-sref=".events" ng-class="$root.eventSelected" ng-click="setSelectedClass('/events')">
             Events
         </div>
-        <div class="nav-item" ui-sref=".feed" ng-class="feedSelected" ng-click="setSelectedClass('/feed')">
+        <div class="nav-item" ui-sref=".feed" ng-class="$root.feedSelected" ng-click="setSelectedClass('/feed')">
             Feed
         </div>
-        <div class="nav-item" ui-sref=".profile" ng-class="profileSelected" ng-click="setSelectedClass('/profile')">
+        <div class="nav-item" ui-sref=".profile" ng-class="$root.profileSelected" ng-click="setSelectedClass('/profile')">
             Profile
         </div>
-        <div class="nav-item" ui-sref=".create" ng-class="createSelected" ng-click="setSelectedClass('/create')">
+        <div class="nav-item" ui-sref=".create" ng-class="$root.createSelected" ng-click="setSelectedClass('/create')">
             Create Event
         </div>
     </nav>
 </header>
-<div ui-view ></div>
+<div ui-view class="content"></div>

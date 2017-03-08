@@ -1,45 +1,44 @@
 module.exports = {
   template: require('./index.html'),
-  controller: function ($scope, $location) {
+  controller: function ($scope, $location, $rootScope) {
     $scope.hello = 'Hello Dashboard!';
 
-    // $scope.eventSelected = 'selected';
-    // $scope.feedSelected = '';
-    // $scope.profileSelected = '';
-    // $scope.createSelected = '';
+    $rootScope.eventSelected = 'selected';
+    $rootScope.feedSelected = '';
+    $rootScope.profileSelected = '';
+    $rootScope.createSelected = '';
 
     $scope.setSelectedClass = function (tab) {
       setSelectedClass(tab);
     };
 
     function setSelectedClass(tab) {
-      console.log(tab);
       if (tab === '/events') {
-        $scope.eventSelected = 'selected';
-        $scope.feedSelected = '';
-        $scope.profileSelected = '';
-        $scope.createSelected = '';
+        $rootScope.eventSelected = 'selected';
+        $rootScope.feedSelected = '';
+        $rootScope.profileSelected = '';
+        $rootScope.createSelected = '';
       } else if (tab === '/feed') {
-        $scope.eventSelected = '';
-        $scope.feedSelected = 'selected';
-        $scope.profileSelected = '';
-        $scope.createSelected = '';
+        $rootScope.eventSelected = '';
+        $rootScope.feedSelected = 'selected';
+        $rootScope.profileSelected = '';
+        $rootScope.createSelected = '';
       } else if (tab === '/profile') {
-        $scope.eventSelected = '';
-        $scope.feedSelected = '';
-        $scope.profileSelected = 'selected';
-        $scope.createSelected = '';
+        $rootScope.eventSelected = '';
+        $rootScope.feedSelected = '';
+        $rootScope.profileSelected = 'selected';
+        $rootScope.createSelected = '';
       } else if (tab === '/create') {
-        $scope.eventSelected = '';
-        $scope.feedSelected = '';
-        $scope.profileSelected = '';
-        $scope.createSelected = 'selected';
+        $rootScope.eventSelected = '';
+        $rootScope.feedSelected = '';
+        $rootScope.profileSelected = '';
+        $rootScope.createSelected = 'selected';
       } else if (tab === '/') {
         console.log("hi");
-        $scope.eventSelected = '';
-        $scope.feedSelected = '';
-        $scope.profileSelected = '';
-        $scope.createSelected = '';
+        $rootScope.eventSelected = '';
+        $rootScope.feedSelected = '';
+        $rootScope.profileSelected = '';
+        $rootScope.createSelected = '';
       }
     }
 

@@ -2,10 +2,14 @@
 .bottom-card-tabs {
     border-top: 1px solid #EEEFF3;
     margin: 0;
+    width: 100%;
 }
 .bottom-card-tab {
     text-align: center;
     color: #ACADAD;
+}
+.bottom-card-tab:nth-child(2) {
+    border-left: 1px solid #EEEFF3;
     border-right: 1px solid #EEEFF3;
 }
 .event .picture {
