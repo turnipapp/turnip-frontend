@@ -4,16 +4,28 @@
     </div>
     <nav>
         <div class="nav-item" ui-sref=".events" ng-class="$root.eventSelected" ng-click="setSelectedClass('/events')">
-            Events
+            <i class="fa fa-calendar-o fa-2x"></i>
+            <div as-m-t="1">
+                Events
+            </div>
         </div>
         <div class="nav-item" ui-sref=".feed" ng-class="$root.feedSelected" ng-click="setSelectedClass('/feed')">
-            Feed
+            <i class="fa fa-list fa-2x"></i>
+            <div as-m-t="1">
+                Feed
+            </div>
         </div>
         <div class="nav-item" ui-sref=".profile" ng-class="$root.profileSelected" ng-click="setSelectedClass('/profile')">
-            Profile
+            <i class="fa fa-user fa-2x"></i>
+            <div as-m-t="1">
+                Profile
+            </div>
         </div>
         <div class="nav-item" ui-sref=".create" ng-class="$root.createSelected" ng-click="setSelectedClass('/create')">
-            Create Event
+            <i class="fa fa-plus fa-2x"></i>
+            <div as-m-t="1">
+                Create
+            </div>
         </div>
     </nav>
 </header>

@@ -1,102 +1,100 @@
 <div class="max-width" as-p-t="4">
-    <div as-card as-p-xy="4">
-        <div as-m-b="2">
-            <span as-f="l bold">Create an event</span>
-        </div>
-        <input as-i-text placeholder="Event name" as-m-y="2" ng-model="name"/>
-        <span as-f="l normal">Choose a theme</span>
-        <div class="themes" as-m-t="2">
-            <div ng-if="themes.length !== 0">
-                <div ng-repeat="theme in themes">
-                    <div ng-click="chooseTheme(theme)" class="theme-preview col-sm-4" style="background: url({{theme.small}}); background-position: center center; background-size: cover"></div>
+    <div as-card>
+        <div class="card-header row" as-p-xy="4">
+            <div class="col-xs-2 no-margin" style="text-align: left">
+                <i class="fa fa-chevron-left" ng-click="setState(steps.state - 1)"></i>
+            </div>
+            <div class="col-xs-8 no-margin">
+                <div ng-repeat="step in steps.steps" as-f="m normal" class="steps">
+                    <div class="step" ng-class="step.class" ng-click="setState($index)">
+                        {{step.title}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div as-m-y=2 ng-if="theme">
-            Theme: {{theme.name}}
-        </div>
-        <input as-i-text placeholder="Event location" as-m-y="4" ng-model="location"/>
-        <div class="row text-center" as-p-y="2">
+            <div class="col-xs-2 no-margin" style="text-align: right" >
+                <i class="fa fa-chevron-right" ng-click="setState(steps.state + 1)"></i>
+            </div>
 
+        </div>
+        <div as-p-xy="4">
+            <div ng-if="steps.state === 0" class="row">
+                <input as-i-text placeholder="Event name" as-m-y="2" ng-model="event.name"/>
+                <input as-i-text placeholder="Event location" as-m-y="4" ng-model="event.location"/>
 
-            <div class="col-md-6 no-margin">
-                <div class="row">
-                    <div class="col-xs-5 no-margin">
-                        <md-datepicker ng-model="dateFrom" md-placeholder="Date From"></md-datepicker>
+                <!-- TIME FROM -->
+                <div class="col-sm-6 no-margin">
+                    <div as-f="s bold">
+                        <span as-f-c="mono">Start Date</span>
                     </div>
-                    <div class="col-xs-7">
-                        <div class="row">
-                            <div class="col-xs-3 no-margin">
-                                <input as-i-text placeholder="12" ng-model="timeFrom.hours" maxlength="2"/>
-                            </div>
-                            <div class="col-xs-1" as-m-t="2">
-                                <span as-f="m normal">:</span>
-                            </div>
-                            <div class="col-xs-3 no-margin">
-                                <input as-i-text placeholder="00" ng-model="timeFrom.minutes" maxlength="2"/>
-                            </div>
-                            <div class="col-xs-4 no-margin">
-                                <select ng-model="timeFrom.twelve">
-                                    <option value="am">am</option>
-                                    <option value="pm">pm</option>
-                                </select>
-                            </div>
+                    <md-datepicker ng-model="event.dateFrom.date" md-placeholder="Date From"></md-datepicker>
+                </div>
+                <div class="col-sm-6 no-margin">
+                    <div as-f="s bold">
+                        <span as-f-c="mono">Start Time</span>
+                    </div>
+                    <div class="row">
+                        <input as-i-text type="time" ng-model="event.dateFrom.time"/>
+                    </div>
+                </div>
+
+                <!-- TIME TO -->
+                <div class="col-sm-6 no-margin" as-m-t="4">
+                    <div as-f="s bold">
+                        <span as-f-c="mono">End Date</span>
+                    </div>
+                    <md-datepicker ng-model="event.dateTo.date" md-placeholder="Date From"></md-datepicker>
+                </div>
+                <div class="col-sm-6 no-margin" as-m-t="4">
+                    <div as-f="s bold">
+                        <span as-f-c="mono">End Time</span>
+                    </div>
+                    <div class="row">
+                        <input as-i-text type="time" ng-model="event.dateTo.time" />
+                    </div>
+                </div>
+            </div>
+            <div ng-if="steps.state === 1">
+                <span as-f="l normal">Choose a theme</span>
+                <div class="themes" as-m-t="2">
+                    <div ng-if="themes.length !== 0">
+                        <div ng-repeat="theme in themes">
+                            <div ng-click="chooseTheme(theme)" class="theme-preview col-sm-4" style="background: url({{theme.small}}); background-position: center center; background-size: cover"></div>
                         </div>
                     </div>
                 </div>
+                <div as-m-t=2 ng-if="event.theme">
+                    Theme: {{event.theme.name}}
+                </div>
             </div>
-
-
-            <div class="col-md-6 no-margin">
-                <div class="row">
-                    <div class="col-xs-6 no-margin">
-                        <md-datepicker ng-model="dateTo" md-placeholder="Date To"></md-datepicker>
+            <div ng-if="steps.state === 2">
+                <span as-f="l normal">Invite People</span>
+                <div class="row" as-m-t="2">
+                    <div class="col-sm-10 no-margin" as-p-r="2">
+                        <input as-i-text placeholder="Enter email" ng-model="invite.new"/>
                     </div>
-                    <div class="col-xs-6">
-                        <div class="row" style="width: 160px">
-                            <div class="col-xs-4 no-margin">
-                                <input as-i-text placeholder="12" ng-model="timeTo.hours" maxlength="2"/> :
+                    <div class="col-sm-2 no-margin" as-p-l="2">
+                        <button as-i-button ng-click="addPerson()">Invite</button>
+                    </div>
+                </div>
+                <div as-m-y="2">
+                    <span as-f="m normal" ng-if="invites.length > 0">Invites</span>
+                    <div ng-repeat="i in invites">
+                        <div class="invite row">
+                            <div class="col-xs-8 no-margin">
+                                {{i.email}} - {{i.name}}
                             </div>
                             <div class="col-xs-4 no-margin">
-                                <input as-i-text placeholder="00" ng-model="timeTo.minutes" maxlength="2"/>
+                                <div ng-click="removePerson(i.id)">Uninvite</div>
                             </div>
-                            <div class="col-xs-4 no-margin">
-                                <select ng-model="timeTo.twelve">
-                                    <option value="am">am</option>
-                                    <option value="pm">pm</option>
-                                </select>
-                            </div>
+
                         </div>
                     </div>
                 </div>
+                <button as-i-button-good ng-click="create()">Create</button>
             </div>
         </div>
-        <span as-f="l normal">Invite People</span>
-        <div class="row" as-m-t="2">
-            <div class="col-sm-8 no-margin" as-p-r="2">
-                <input as-i-text placeholder="Enter email" ng-model="invite"/>
-            </div>
-            <div class="col-sm-4 no-margin" as-p-l="2">
-                <button as-i-button-good ng-click="addPerson()">Invite</button>
-            </div>
-        </div>
-        <div as-m-y="2">
-            <span as-f="m normal" ng-if="invites.length > 0">Invites</span>
-            <div ng-repeat="i in invites">
-                <div class="invite row">
-                    <div class="col-xs-8 no-margin">
-                        {{i.email}} - {{i.name}}
-                    </div>
-                    <div class="col-xs-4 no-margin">
-                        <div ng-click="removePerson(i.id)">Uninvite</div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <button as-i-button as-m-y="2" ng-click="create()">Create Event</button>
     </div>
     <div as-m-t="2">
-        <span as-f="s normal">{{message}}</span>
+        <span as-f="s bold"><span as-f-c="mono">{{message}}</span></span>
     </div>
 </div>
