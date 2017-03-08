@@ -3,9 +3,9 @@ module.exports = routesConfig;
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
-  $urlRouterProvider.otherwise('/events');
   $urlRouterProvider.when('/profile', '/profile/myprofile');
   $urlRouterProvider.when('/event/:id', '/event/:id/discussion');
+  $urlRouterProvider.otherwise('events');
 
   $stateProvider
     .state('app', {
