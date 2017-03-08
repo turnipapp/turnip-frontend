@@ -3,11 +3,13 @@ var config = {
   colors: {
     primary: {
       light: '#29BCE6',
-      dark: '#008AC9'
+      dark: '#008AC9',
+      hover: '#3FC1E8'
     },
     good: {
-      light: '#15CD72',
-      dark: '#0CB863'
+      light: '#6BD364',
+      dark: '#06B735',
+      hover: '#77D670'
     },
     bad: {
       light: '#F9532C',
@@ -448,7 +450,8 @@ angular.module('angularStyle', [])
       }
 
       createCSSSelector('.as-input', styleString, $document);
-      createCSSSelector('.as-input:focus', 'border: 2px solid ' + config.colors.mono, $document);
+      createCSSSelector('.as-input:hover', 'border: 2px solid ' + config.colors.mono, $document);
+      createCSSSelector('.as-input:focus', 'border: 2px solid #29BCE6', $document);
     }
   };
 })
@@ -477,7 +480,7 @@ angular.module('angularStyle', [])
         styleString += '; ';
       }
       createCSSSelector('.button-primary', styleString, $document);
-      createCSSSelector('.button-primary:hover', 'background: ' + config.colors.primary.dark + '; cursor: pointer', $document);
+      createCSSSelector('.button-primary:hover', 'background: ' + config.colors.primary.hover + '; cursor: pointer', $document);
     }
   };
 })
@@ -492,10 +495,12 @@ angular.module('angularStyle', [])
         'outline: none',
         'padding: 12px 8px',
         'font-size: 11px',
+        'font-weight: bold',
+        'text-transform: uppercase',
         'color: #fff',
         'background: ' + config.colors.good.light,
         'border: none',
-        'border-bottom: 2px solid ' + config.colors.good.dark
+        'border: 2px solid ' + config.colors.good.dark
       ];
 
       var styleString = '';
@@ -504,7 +509,7 @@ angular.module('angularStyle', [])
         styleString += '; ';
       }
       createCSSSelector('.button-good', styleString, $document);
-      createCSSSelector('.button-good:hover', 'background: ' + config.colors.good.dark + '; cursor: pointer', $document);
+      createCSSSelector('.button-good:hover', 'background: ' + config.colors.good.hover + '; cursor: pointer', $document);
     }
   };
 })
@@ -547,6 +552,7 @@ angular.module('angularStyle', [])
       var styles = [
         'background: #fff',
         'border-radius: 0px',
+        'border: 1px solid #CECBC9',
         'box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12)'
       ];
 

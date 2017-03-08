@@ -1,29 +1,70 @@
 module.exports = {
   template: require('./index.html'),
   controller: function ($scope, $http, $cookies, $location) {
-    $scope.name = "Event Name";
-    $scope.location = "434 N Grant St";
-    $scope.timeFrom = {};
-    $scope.timeFrom.hours = "12";
-    $scope.timeFrom.minutes = "00";
-    $scope.timeFrom.twelve = "am";
-    $scope.timeTo = {};
-    $scope.timeTo.hours = "12";
-    $scope.timeTo.minutes = "00";
-    $scope.timeTo.twelve = "pm";
+    $scope.steps = {
+      state: 0,
+      steps: [
+        {
+          title: 'Basic Info',
+          class: 'current-state'
+        },
+        {
+          title: 'Theme',
+          class: ''
+        },
+        {
+          title: 'Invite',
+          class: ''
+        }
+      ]
+    };
+    $scope.invites = [];
+    $scope.invite = {};
+    $scope.event = {};
+
+    /*
+     * Controls what state in the event creation we are in
+     */
+    $scope.setState = function (state) {
+      if (state >= 0 && state < $scope.steps.steps.length) {
+        $scope.steps.state = state;
+        for (var i = 0; i < $scope.steps.steps.length; i++) {
+          if (i === state) {
+            $scope.steps.steps[i].class = 'current-state';
+          } else {
+            $scope.steps.steps[i].class = '';
+          }
+        }
+      }
+    };
+
+    /*
+     * Gets all themes from the theme route
+     */
     $http.get('http://localhost:5000/themes', {headers: {token: $cookies.get('token')}}).then(function (res) {
       if (res.data.success) {
         $scope.themes = res.data.themes;
       }
     });
 
-    $scope.invites = [];
-
+    /*
+     * Sets the desired event theme
+     */
     $scope.chooseTheme = function (theme) {
-      $scope.theme = theme;
+      $scope.event.theme = theme;
     };
 
+    /*
+     * Validates the email address then adds the person to the list of invites
+     */
+
     $scope.addPerson = function () {
+      $scope.invite = $scope.invite.new;
+      if (angular.isUndefined($scope.invite)) {
+        $scope.message = 'You need to type something first.';
+        return;
+      }
+
       if (validateEmail($scope.invite)) {
         $scope.invites.unshift({email: $scope.invite});
         $http.get('http://localhost:5000/user/email/' + $scope.invite, {headers: {token: $cookies.get('token')}}).then(function (res) {
@@ -32,13 +73,18 @@ module.exports = {
               $scope.invites[i] = res.data;
             }
           }
-          $scope.invite = '';
+          $scope.invite = {
+            new: ''
+          };
         });
       } else {
         $scope.message = "Not a valid email";
       }
     };
 
+    /*
+     * Finds the user by id then removes them from the invite array
+     */
     $scope.removePerson = function (id) {
       var index;
       for (var i = 0; i < $scope.invites.length; i++) {
@@ -55,70 +101,65 @@ module.exports = {
       return re.test(email);
     }
 
+    /*
+     * Verifies all input and does the POST to create the event
+     */
     $scope.create = function () {
       try {
-        if (angular.isUndefined($scope.name)) {
-          $scope.message = 'Please add an event name.';
-        } else if (angular.isUndefined($scope.location)) {
-          $scope.message = 'Please add an event location.';
-        } else if (angular.isUndefined($scope.dateFrom) ||
-                   angular.isUndefined($scope.timeFrom.hours) ||
-                   angular.isUndefined($scope.timeFrom.minutes) ||
-                   angular.isUndefined($scope.timeFrom.twelve)) {
-          $scope.message = 'Please add an event start time.';
-        } else if (angular.isUndefined($scope.dateTo) ||
-                   angular.isUndefined($scope.timeTo.hours) ||
-                   angular.isUndefined($scope.timeTo.minutes) ||
-                   angular.isUndefined($scope.timeTo.twelve)) {
-          $scope.message = 'Please add an event end time.';
-        } else {
-          var dateStart = new Date($scope.dateFrom);
-          var dateEnd = new Date($scope.dateTo);
-          var timeFrom = $scope.timeFrom;
-          var timeTo = $scope.timeTo;
+        if (allForms()) {
+          var dateFrom = new Date($scope.event.dateFrom.date);
+          dateFrom.setHours($scope.event.dateFrom.time.getHours());
+          dateFrom.setMinutes($scope.event.dateFrom.time.getMinutes());
 
-          // Modifies the date object to update the time
-          if (angular.isDefined(timeFrom.twelve) && timeFrom.twelve === 'am') {
-            dateStart.setHours(timeFrom.hours % 12);
-            dateStart.setMinutes(timeFrom.minutes);
-          } else if (angular.isDefined(timeFrom.twelve) && timeFrom.twelve === 'pm') {
-            var twentyFourFrom = parseInt(timeFrom.hours, 10) + 12;
-            dateStart.setHours(twentyFourFrom);
-            dateStart.setMinutes(timeFrom.minutes);
-          } else {
-            $scope.message = 'Please choose am or pm';
-          }
+          var dateTo = new Date($scope.event.dateTo.date);
+          dateTo.setHours($scope.event.dateTo.time.getHours());
+          dateTo.setMinutes($scope.event.dateTo.time.getMinutes());
 
-          // Modifies the date object to update the time
-          if (angular.isDefined(timeTo.twelve) && timeTo.twelve === 'am') {
-            dateEnd.setHours(timeTo.hours % 12);
-            dateEnd.setMinutes(timeTo.minutes);
-          } else if (angular.isDefined(timeTo.twelve) && timeTo.twelve === 'pm') {
-            var twentyFourTo = parseInt(timeTo.hours, 10) + 12;
-            dateEnd.setHours(twentyFourTo);
-            dateEnd.setMinutes(timeTo.minutes);
-          } else {
-            $scope.message = 'Please choose am or pm';
-          }
-
-          var obj = {
-            title: $scope.name,
-            location: $scope.location,
-            dateStart: dateStart,
-            dateEnd: dateEnd,
-            theme: $scope.theme.id,
+          var event = {
+            name: $scope.event.name,
+            location: $scope.event.location,
+            dateStart: dateFrom,
+            dateEnd: dateTo,
+            theme: $scope.event.theme.id,
             invites: $scope.invites
           };
 
-          $http.post('http://localhost:5000/event', obj, {headers: {token: $cookies.get('token')}}).then(function (res) {
+          $http.post('http://localhost:5000/event', event, {headers: {token: $cookies.get('token')}}).then(function (res) {
             if (res.data.success) {
               $location.path('/event/' + res.data.eventId);
+            } else {
+              $scope.message = res.data.message;
             }
           });
         }
       } catch (err) {
-        $scope.message = 'Please fill in all forms.';
+        $scope.message = 'Please enter all forms';
       }
     };
+
+    /*
+     * Verifies that all user forms are filled in, otherwise it
+     */
+    function allForms() {
+      var event = $scope.event;
+      if (angular.isUndefined(event.name)) {
+        $scope.message = 'What are you going to call your party? (Missing name)';
+        return false;
+      } else if (angular.isUndefined(event.location)) {
+        $scope.message = 'You need somewhere to party (Missing location)';
+        return false;
+      } else if (angular.isUndefined(event.dateFrom.date) || angular.isUndefined(event.dateFrom.time)) {
+        $scope.message = 'People need to know when to show up (Missing start date & time)';
+        return false;
+      } else if (angular.isUndefined(event.dateTo.date) || angular.isUndefined(event.dateTo.time)) {
+        $scope.message = 'People need to know when to leave (Missing end date & time)';
+        return false;
+      } else if (angular.isUndefined(event.theme)) {
+        $scope.message = 'Please enter a theme';
+        return false;
+      }
+
+      return true;
+    }
   }
 };
