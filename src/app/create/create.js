@@ -116,7 +116,7 @@ module.exports = {
           dateTo.setMinutes($scope.event.dateTo.time.getMinutes());
 
           var event = {
-            name: $scope.event.name,
+            title: $scope.event.name,
             location: $scope.event.location,
             dateStart: dateFrom,
             dateEnd: dateTo,
