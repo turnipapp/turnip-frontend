@@ -5,7 +5,7 @@ header {
     margin: 0;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     height: 60px;
-    /*line-height: 60px;*/
+    line-height: 60px;
     z-index: 3;
     position: absolute;
     top: 0;
@@ -21,11 +21,14 @@ header {
     font-weight: bold;
     text-transform: uppercase;
     font-size: 10px;
-    padding-top: 12px;
+    /*padding-top: 12px;*/
 }
 .nav-item.selected {
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #C04352;
     color: #fff;
+}
+.nav-item:hover:not(.selected) {
+    color: #B9B1C2;
 }
 .logo {
     float: left;
