@@ -1,6 +1,3 @@
-<!-- {{ event }} -->
-<!-- <img src="{{image}}" /> -->
-<!-- {{image}} -->
 <div class="event-header">
     <div class="img" style="background: url({{image}}); background-position: center center; background-size: cover"></div>
     <div class="info" as-p-xy="4">
@@ -13,13 +10,19 @@
                 <span as-f="s normal">Hosted by: {{host.name}}</span>
             </div>
         </div>
-        <!-- <span>{{event}}</span> -->
     </div>
 </div>
 
 <div class="new-post" as-m-t="4">
     <textarea ng-model="newPostContent" placeholder="Share something..."></textarea>
-    <button ng-click="newPost()">Post</button>
+    <div as-p-xy="2" class="row">
+        <div class="col-sm-6 no-margin" as-p-r="2">
+            <button as-i-button ng-click="newPost()">Upload</button>
+        </div>
+        <div class="col-sm-6 no-margin" as-p-="2">
+            <button as-i-button-good ng-click="newPost()">Post</button>
+        </div>
+    </div>
 </div>
 
 <div ng-if="posts.length == 0">
