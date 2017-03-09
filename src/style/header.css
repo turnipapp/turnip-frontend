@@ -61,6 +61,7 @@ nav {
     color: #373737;
 }
 @media only screen and (max-width: 430px) {
+
     .logo {
         display: none;
     }
@@ -72,5 +73,9 @@ nav {
         text-align: center;
         float: none;
         display: inline;
+        width: 20%;
+    }
+    .nav-item.selected {
+        border: none;
     }
 }
