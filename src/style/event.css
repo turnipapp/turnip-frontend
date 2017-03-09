@@ -32,7 +32,6 @@
     text-align: center;
     height: 40px;
     background: #F9F7F6;
-    /*box-shadow: 0 0 10px rgba(0,0,0,0.2);*/
     line-height: 40px;
     z-index: 1;
     color: #7C7977;
@@ -40,8 +39,6 @@
     font-weight: bold;
     text-transform: uppercase;
     font-size: 11px;
-    /*background-image: linear-gradient(to right, #434343 0%, black 100%);*/
-    /*background-image: linear-gradient(to right, #868f96 0%, #596164 100%);*/
 }
 .event-nav-item-wrapper {
     display: inline-block;
