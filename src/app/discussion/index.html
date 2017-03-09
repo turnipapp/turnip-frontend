@@ -19,7 +19,15 @@
 
 <div class="new-post" as-m-t="4">
     <textarea ng-model="newPostContent" placeholder="Share something..."></textarea>
-    <button ng-click="newPost()">Post</button>
+    <div as-p-xy="2" class="row">
+        <div class="col-sm-6 no-margin" as-p-r="2">
+            <button as-i-button ng-click="newPost()">Upload</button>
+        </div>
+        <!-- <div class="col-sm-4 no-margin"></div> -->
+        <div class="col-sm-6 no-margin" as-p-="2">
+            <button as-i-button-good ng-click="newPost()">Post</button>
+        </div>
+    </div>
 </div>
 
 <div ng-if="posts.length == 0">

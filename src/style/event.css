@@ -1,8 +1,9 @@
 .event-header {
     background: #fff;
     width: 100%;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.12);
     border-radius: 0px;
+    border: 1px solid #CECBC9;
 }
 .event-header .img {
     width: 100%;
@@ -12,7 +13,9 @@
 }
 .new-post {
     width: 100%;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.12);
+    border: 1px solid #CECBC9;
+    background: #fff;
 }
 .new-post textarea {
     width: 100%;
@@ -23,22 +26,6 @@
     padding: 16px;
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
-}
-.new-post button {
-    width: 100%;
-    border: none;
-    padding: 8px;
-    background: #15CD72;
-    border-bottom: 2px solid #0CB863;
-    color: #fff;
-    font-size: 11px;
-    outline: none;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-}
-.new-post button:hover {
-    background: #0CB863;
-    border-bottom: 2px solid #15CD72;
 }
 .event-nav {
     width: 100%;
