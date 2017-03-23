@@ -1,51 +1,3 @@
-<!-- <header>
-    <div class="row">
-        <div class="col-sm-2">
-            <div as-m-t="3" ui-sref="dashboard">
-                <img src="http://i.imgur.com/HWqHIXd.png" width="22px" height="auto"/>
-            </div>
-        </div>
-        <div class="col-sm-8">
-            <div class="max-width">
-                <div class="col-xs-4 nav-item" ui-sref="dashboard" as-p-y="4">
-                    <span as-f="s bold">Events</span>
-                </div>
-                <div class="col-xs-4 nav-item" ui-sref=".discussion({id: id})" as-p-y="4" ng-class="discussionSelected" ng-click="setSelectedClass('/discussion')">
-                    <span as-f="s bold">Discussion</span>
-                </div>
-                <div class="col-xs-4 nav-item" ui-sref=".map({id: id})" as-p-y="4" ng-class="mapSelected" ng-click="setSelectedClass('/map')">
-                    <span as-f="s bold">Map</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div as-m-t="2" ng-click="createEvent()">
-                <button as-i-button>Create Event</button>
-            </div>
-        </div>
-    </div>
-</header> -->
-<!-- <header class="row">
-    <div class="logo">
-        <img src="http://i.imgur.com/HWqHIXd.png" width="22px" height="auto"/>
-    </div>
-    <nav>
-        <div class="nav-item" ui-sref="dashboard.events" ng-class="eventSelected" ng-click="setSelectedClass('/event')">
-            Events
-        </div>
-        <div class="nav-item" ui-sref="dashboard.feed" ng-class="feedSelected" ng-click="setSelectedClass('/feed')">
-            Feed
-        </div>
-        <div class="nav-item" ui-sref="dashboard.profile" ng-class="profileSelected" ng-click="setSelectedClass('/profile')">
-            Profile
-        </div>
-        <div class="nav-item">
-            <div class="create-button">
-                <button as-click="createEvent()">Create Event</button>
-            </div>
-        </div>
-    </nav>
-</header> -->
 <div class="event-nav">
     <div class="event-nav-item-wrapper">
         <div class="event-nav-item selected" ui-sref=".discussion({id: id})" ng-class="discussionSelected" ng-click="setSelectedClass('/discussion')">
@@ -53,6 +5,9 @@
         </div>
         <div class="event-nav-item" ui-sref=".map({id: id})" ng-class="mapSelected" ng-click="setSelectedClass('/map')">
             Map
+        </div>
+        <div class="event-nav-item" ui-sref=".info({id: id})" ng-class="infoSelected" ng-click="setSelectedClass('/info')">
+            Info
         </div>
     </div>
 </div>

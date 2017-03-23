@@ -29,6 +29,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         user: mustBeLoggedIn
       }
     })
+    .state('app.feed', {
+      url: 'feed',
+      component: 'feed',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
     .state('app.profile', {
       url: 'profile',
       component: 'profile',
@@ -67,6 +74,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('app.event.discussion', {
       url: '/discussion',
       component: 'discussion',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
+    .state('app.event.info', {
+      url: '/info',
+      component: 'info',
       resolve: {
         user: mustBeLoggedIn
       }

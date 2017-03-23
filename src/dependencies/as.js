@@ -12,8 +12,9 @@ var config = {
       hover: '#77D670'
     },
     bad: {
-      light: '#F9532C',
-      dark: '#E44924'
+      light: '#EF5C48',
+      dark: '#D83E13',
+      hover: '#F06956'
     },
     dark: '#202020',
     mono: '#7C7977',
@@ -524,10 +525,12 @@ angular.module('angularStyle', [])
         'outline: none',
         'padding: 12px 8px',
         'font-size: 11px',
+        'font-weight: bold',
+        'text-transform: uppercase',
         'color: #fff',
         'background: ' + config.colors.bad.light,
         'border: none',
-        'border-bottom: 2px solid ' + config.colors.bad.dark
+        'border: 2px solid ' + config.colors.bad.dark
       ];
 
       var styleString = '';
@@ -536,7 +539,7 @@ angular.module('angularStyle', [])
         styleString += '; ';
       }
       createCSSSelector('.button-bad', styleString, $document);
-      createCSSSelector('.button-bad:hover', 'background: ' + config.colors.bad.dark + '; cursor: pointer', $document);
+      createCSSSelector('.button-bad:hover', 'background: ' + config.colors.bad.hover + '; cursor: pointer', $document);
     }
   };
 })

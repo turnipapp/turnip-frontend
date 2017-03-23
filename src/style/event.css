@@ -27,28 +27,3 @@
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
 }
-.event-nav {
-    width: 100%;
-    text-align: center;
-    height: 40px;
-    background: #F9F7F6;
-    line-height: 40px;
-    z-index: 1;
-    color: #7C7977;
-    border-bottom: 1px solid #D3D1D0;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 11px;
-}
-.event-nav-item-wrapper {
-    display: inline-block;
-}
-.event-nav-item {
-    float: left;
-    padding: 0 16px;
-    outline: none;
-    height: 39px;
-}
-.event-nav-item.selected {
-    border-bottom: 2px solid #7C7977;
-}
