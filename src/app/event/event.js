@@ -11,7 +11,7 @@ module.exports = {
       setSelectedClass(tab);
     };
 
-    function setSelectedClass(tab) {
+    function setSelectedClass(tab) { 
       var subRoute = tab.substring(tab.lastIndexOf("/"));
       if (subRoute === '/discussion') {
         $scope.discussionSelected = 'selected';
