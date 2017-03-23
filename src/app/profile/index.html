@@ -1,20 +1,16 @@
-<div class="max-width">
-    <div as-m-t="4"></div>
-    <div class="col-xs-2">
-      <div class="nav">
-        <div ui-sref="dashboard.profile" as-m-b="2" >
-            <span as-f="s bold" class="link underline">My Profile</span>
+<div class="event-nav">
+    <div class="event-nav-item-wrapper">
+        <div class="event-nav-item" ui-sref="app.profile">
+            My Profile
         </div>
-        <div ui-sref=".profilesettings" as-m-b="2" class="link">
-            <span as-f="s bold" class="link underline">Profile Settings</span>
+        <div class="event-nav-item" ui-sref=".profilesettings" ng-class="mapSelected" ng-click="setSelectedClass('/map')">
+            Settings
         </div>
-        <div ng-click="logout()" class="link">
-            <span as-f="s bold">Logout</span>
+        <div class="event-nav-item" ng-click="logout()">
+            Logout
         </div>
-      </div>
     </div>
-
-    <div class="col-xs-10">
-        <div ui-view ></div>
-    </div>
+</div>
+<div class="max-width" as-p-t="4">
+    <div ui-view ></div>
 </div>

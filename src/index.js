@@ -13,6 +13,8 @@ var signup = require('./app/signup/signup');
 var profilesettings = require('./app/profilesettings/profilesettings');
 var myprofile = require('./app/myprofile/myprofile');
 var discussion = require('./app/discussion/discussion');
+var info = require('./app/info/info');
+var feed = require('./app/feed/feed');
 
 require('angular-ui-router');
 var routesConfig = require('./routes');
@@ -42,4 +44,6 @@ angular
   .component('profile', profile)
   .component('signup', signup)
   .component('profilesettings', profilesettings)
+  .component('info', info)
+  .component('feed', feed)
   .component('myprofile', myprofile);
