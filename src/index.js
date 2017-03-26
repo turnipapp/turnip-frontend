@@ -17,6 +17,7 @@ var info = require('./app/info/info');
 var feed = require('./app/feed/feed');
 
 require('angular-ui-router');
+require('angular-jwt');
 var routesConfig = require('./routes');
 
 require('./style/bootstrap-layout.css');
@@ -30,7 +31,7 @@ var app = 'app';
 module.exports = app;
 
 angular
-  .module(app, ['ui.router', 'angularStyle', 'ngCookies', 'ngMaterial'])
+  .module(app, ['ui.router', 'angular-jwt', 'angularStyle', 'ngCookies', 'ngMaterial'])
   .constant('API', {url: 'http://localhost:5000/'})
   .config(routesConfig)
   .component('app', hello)

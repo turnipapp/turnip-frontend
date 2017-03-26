@@ -1,6 +1,6 @@
 module.exports = {
   template: require('./index.html'),
-  controller: function ($scope, $stateParams, $http, $cookies) {
+  controller: function ($scope, $stateParams, $http, $cookies, jwtHelper) {
     $scope.hello = "hi";
     // $scope.posts = [
     //   {
@@ -14,7 +14,7 @@ module.exports = {
     //     date: '3:30 am'
     //   },
     //   {
-    //     text: 'It\'s lit',
+    //     text: 'It\'s lit'
     //     author: 'Kevin Cardona',
     //     date: '7:00 pm'
     //   }
@@ -30,12 +30,25 @@ module.exports = {
 
       $http.get('http://localhost:5000/user/id/' + $scope.event.owner, {headers: {token: $cookies.get('token')}}).then(function (res) {
         $scope.host = res.data;
+        var tokenPayload = jwtHelper.decodeToken($cookies.get('token'));
+        var currentLoggedInUserId = tokenPayload._id;
+        $scope.isHost = currentLoggedInUserId === res.data.id;
       });
 
       $http.get('http://localhost:5000/posts/' + id, {headers: {token: $cookies.get('token')}}).then(function (res) {
         $scope.posts = res.data.posts;
       });
     });
+
+    $scope.deletePost = function (id) {
+        $http.delete('http://localhost:5000/posts/' + id, {headers: {token: $cookies.get('token')}}).then(function (res) {
+          $http.get('http://localhost:5000/posts/' + $scope.event._id, {headers: {token: $cookies.get('token')}}).then(function (res) {
+            if (res.data.success) {
+              $scope.posts = res.data.posts;
+            }
+          });
+        });
+    }
 
     $scope.newPost = function () {
       $http.get('http://localhost:5000/account', {headers: {token: $cookies.get('token')}}).then(function (res) {
