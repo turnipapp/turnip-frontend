@@ -31,10 +31,37 @@
     </div>
 </div>
 <div ng-repeat="post in posts">
-  <div as-card as-m-y="4">
+  <div as-card as-m-y="4" ng-click="postVisible(post._id, true)">
     <div as-p-xy="4">
       <div as-f="m bold">{{post.userId}}<span as-f="s normal"> - {{post.timestamp | date:'MMMM d, yyyy'}}</span></div>
       <div as-p-t="2">{{post.text}}</div>
+    </div>
+  </div>
+
+  <div ng-if="post.visible">
+    <div class="postbg" ng-click="postVisible(post._id, false)"></div>
+    <div class="post v-center" as-card as-p-xy="4">
+      <div class="row">
+        <div class="col-sm-9 no-margin">
+          <div as-f="m bold">{{post.userId}}<span as-f="s normal"> - {{post.timestamp | date:'MMMM d, yyyy'}}</span></div>
+        </div>
+        <div class="col-sm-3 no-margin" style="text-align: right">
+          <span ng-click="postVisible(post._id, false)" as-f="s bold">Close</span>
+        </div>
+      </div>
+      <div as-p-t="2">{{post.text}}</div>
+      <div class="comment" as-m-t="2">
+        <textarea as-m-t="2" placeholder="Comment..."></textarea>
+        <button as-i-button as-m-y="2">Comment</button>
+      </div>
+      <div ng-repeat="comment in comments | limitTo:5" class="comment-item" as-p-xy="2">
+        <div as-f="m bold">
+          {{comment.author}}
+        </div>
+        <div>
+          {{comment.data}}
+        </div>
+      </div>
     </div>
   </div>
 </div>
