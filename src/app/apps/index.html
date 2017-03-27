@@ -1,0 +1,38 @@
+<div as-m-l="2"><span as-f="m bold">Apps</span></div>
+<div class="cards row" as-m-t="4">
+    <div ng-repeat="app in apps" class="col-sm-3 no-margin">
+        <div as-m-xy="2">
+            <div as-card as-p-xy="4" class="app-card">
+                <i class="fa fa-3x" ng-class="app.icon.class" style="color: {{app.icon.color}}"></i>
+                <div as-m-y="2">
+                    <span as-f="m bold">{{app.name}}</span>
+                </div>
+                <div as-f="s normal">
+                    {{app.description}}
+                </div>
+                <button ng-if="app.status === 'available'" as-i-button as-m-t="2" ng-click="addApp(app)"><i class="fa fa-plus"></i> Add</button>
+                <button ng-if="app.status === 'added'" as-i-button-gray as-m-t="2" ng-click="app.showDeleteModal=true">Remove</button>
+            </div>
+
+            <div class="modal-bg" ng-if="app.showDeleteModal"></div>
+            <div class="small-modal" ng-if="app.showDeleteModal">
+                <div as-card as-p-xy="4">
+                    <div as-f="m bold">
+                        Warning!
+                    </div>
+                    <div as-m-y="4">
+                        <p as-f="m normal">Are you sure you want to delete the {{app.name}} app from your event?</p>
+                    </div>
+                    <div class="row" as-m-t="4">
+                        <div class="col-sm-6 no-margin" >
+                            <button as-i-button-gray as-m-r="2" ng-click="app.showDeleteModal = false">No</button>
+                        </div>
+                        <div class="col-sm-6 no-margin" >
+                            <button as-i-button-bad as-m-l="2" ng-click="deleteApp(app)">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

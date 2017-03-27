@@ -16,6 +16,11 @@ var config = {
       dark: '#D83E13',
       hover: '#F06956'
     },
+    gray: {
+      light: '#E7E6E5',
+      dark: '#C2BEBB',
+      hover: '#EEEFED'
+    },
     dark: '#202020',
     mono: '#7C7977',
     light: '#CECBC9'
@@ -540,6 +545,35 @@ angular.module('angularStyle', [])
       }
       createCSSSelector('.button-bad', styleString, $document);
       createCSSSelector('.button-bad:hover', 'background: ' + config.colors.bad.hover + '; cursor: pointer', $document);
+    }
+  };
+})
+.directive('asIButtonGray', function ($document) {
+  return {
+    restrict: 'A',
+    link: function (scope, element) {
+      element.addClass('button-gray');
+      var styles = [
+        'width: 100%',
+        'border-radius: 4px',
+        'outline: none',
+        'padding: 12px 8px',
+        'font-size: 11px',
+        'font-weight: bold',
+        'text-transform: uppercase',
+        'color: #fff',
+        'background: ' + config.colors.gray.light,
+        'border: none',
+        'border: 2px solid ' + config.colors.gray.dark
+      ];
+
+      var styleString = '';
+      for (var i = 0; i < styles.length; i++) {
+        styleString += styles[i];
+        styleString += '; ';
+      }
+      createCSSSelector('.button-gray', styleString, $document);
+      createCSSSelector('.button-gray:hover', 'background: ' + config.colors.gray.hover + '; cursor: pointer', $document);
     }
   };
 })

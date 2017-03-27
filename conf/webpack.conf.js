@@ -41,6 +41,10 @@ module.exports = {
         loaders: [
           'html-loader'
         ]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-loader?pngScale=2'
       }
     ]
   },

@@ -8,6 +8,8 @@ var events = require('./app/events/events');
 var hello = require('./app/hello/hello');
 var login = require('./app/login/login');
 var map = require('./app/map/map');
+var spotify = require('./app/spotify/spotify');
+var venmo = require('./app/venmo/venmo');
 var profile = require('./app/profile/profile');
 var signup = require('./app/signup/signup');
 var profilesettings = require('./app/profilesettings/profilesettings');
@@ -15,6 +17,7 @@ var myprofile = require('./app/myprofile/myprofile');
 var discussion = require('./app/discussion/discussion');
 var info = require('./app/info/info');
 var feed = require('./app/feed/feed');
+var apps = require('./app/apps/apps');
 
 require('angular-ui-router');
 require('angular-jwt');
@@ -41,10 +44,13 @@ angular
   .component('events', events)
   .component('login', login)
   .component('map', map)
+  .component('spotify', spotify)
+  .component('venmo', venmo)
   .component('discussion', discussion)
   .component('profile', profile)
   .component('signup', signup)
   .component('profilesettings', profilesettings)
   .component('info', info)
   .component('feed', feed)
+  .component('apps', apps)
   .component('myprofile', myprofile);
