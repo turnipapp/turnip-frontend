@@ -55,7 +55,7 @@ module.exports = {
         {
           author: 'Kevin',
           data: 'Nah, it sucked'
-        },
+        }
       ];
       if (state) {
         // $http.get("http://localhost:5000/comments/" + id, {headers: {token: $cookies.get('token')}}).then(function (res) {

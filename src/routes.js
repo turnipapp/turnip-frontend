@@ -71,6 +71,20 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         user: mustBeLoggedIn
       }
     })
+    .state('app.event.spotify', {
+      url: '/spotify',
+      component: 'spotify',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
+    .state('app.event.venmo', {
+      url: '/venmo',
+      component: 'venmo',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
     .state('app.event.discussion', {
       url: '/discussion',
       component: 'discussion',
@@ -81,6 +95,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('app.event.info', {
       url: '/info',
       component: 'info',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
+    .state('app.event.apps', {
+      url: '/apps',
+      component: 'apps',
       resolve: {
         user: mustBeLoggedIn
       }
