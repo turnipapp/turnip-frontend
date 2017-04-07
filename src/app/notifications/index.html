@@ -3,9 +3,11 @@
         <div as-f="l bold">
             Notifications
         </div>
-        <div ng-repeat="noti in notifications">
-            <div as-f="m normal">
-                {{noti[0].message}}
+        <div as-card as-p-xy="4">
+            <div ng-repeat="noti in notifications" class="notification">
+                <div as-f="m normal">
+                    {{noti[0].message}}
+                </div>
             </div>
         </div>
     </div>

@@ -3,6 +3,11 @@ module.exports = {
   controller: function ($scope, $stateParams, $http, $state) {
     var id = $stateParams.id;
 
+    $http.get("http://localhost:5000/invite/" + id).then(function (res) {
+      $scope.info = res.data;
+      console.log($scope.info);
+    });
+
     $scope.sendResponse = function (status) {
       var obj = {
         inviteResponse: status

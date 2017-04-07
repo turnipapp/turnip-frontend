@@ -31,6 +31,7 @@ require('./style/header.css');
 require('./style/events.css');
 require('./style/create.css');
 require('./style/event.css');
+require('./style/not.css');
 
 var app = 'app';
 module.exports = app;

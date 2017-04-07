@@ -1,0 +1,6 @@
+.notification {
+    padding: 8px;
+}
+.notification:nth-child(odd) {
+    background: #F9F7F6;
+}
