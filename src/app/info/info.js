@@ -6,6 +6,11 @@ module.exports = {
         $scope.event = res.data.event;
       }
     });
+    $http.get("http://localhost:5000/events/info/" + $stateParams.id, {headers: {token: $cookies.get('token')}}).then(function (res) {
+      if (res.data.success) {
+        $scope.guests = res.data;
+      }
+    });
 
     $http.get('http://localhost:5000/event/' + $stateParams.id + '/role', {headers: {token: $cookies.get('token')}}).then(function (res) {
       if (res.data.success) {

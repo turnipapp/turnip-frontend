@@ -1,11 +1,34 @@
 <div as-card as-m-b="4">
     <div as-p-xy="4">
-        <div as-f="l bold">
-            {{event.title}}
+        <div class="row text-center">
+            <div class="col-sm-6">
+                <div as-f="l bold">
+                    {{event.title}}
+                </div>
+                <div as-f="m normal">
+                    {{event.dateStart | date:'MMMM d, yyyy'}} -
+                    {{event.dateEnd | date:'MMMM d, yyyy'}}
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div as-f="l bold">
+                    Guests
+                </div>
+                <div as-f="m normal">
+                    Guest invited: {{guests.count}}
+
+                </div>
+            </div>
         </div>
-        <div as-f="m normal">
-            {{event.dateStart | date:'MMMM d, yyyy'}} -
-            {{event.dateEnd | date:'MMMM d, yyyy'}}
+    </div>
+</div>
+<div as-card as-m-b="4">
+    <div as-p-xy="4">
+        <div as-f="l bold">
+            Invited Guests
+        </div>
+        <div ng-repeat="guest in guests.guests">
+            {{guest.username}}
         </div>
     </div>
 </div>
