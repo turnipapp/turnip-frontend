@@ -19,6 +19,7 @@ var info = require('./app/info/info');
 var feed = require('./app/feed/feed');
 var apps = require('./app/apps/apps');
 var invite = require('./app/invite/invite');
+var notifications = require('./app/notifications/notifications');
 
 require('angular-ui-router');
 require('angular-jwt');
@@ -30,6 +31,7 @@ require('./style/header.css');
 require('./style/events.css');
 require('./style/create.css');
 require('./style/event.css');
+require('./style/not.css');
 
 var app = 'app';
 module.exports = app;
@@ -55,4 +57,5 @@ angular
   .component('feed', feed)
   .component('apps', apps)
   .component('invite', invite)
+  .component('notifications', notifications)
   .component('myprofile', myprofile);

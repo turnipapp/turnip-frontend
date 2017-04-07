@@ -2,6 +2,24 @@ module.exports = {
   template: require('./index.html'),
   controller: function ($scope, $stateParams, $http, $cookies, jwtHelper) {
     var id = $stateParams.id;
+    $scope.commenting = {};
+
+    $scope.addComment = function (postId) {
+      var obj = {
+        comment: $scope.commenting.body
+      };
+
+      var url = 'http://localhost:5000/posts/' + postId + '/comment';
+
+      $http.post(url, obj, {headers: {token: $cookies.get('token')}}).then(function (res) {
+        if (res.data.success) {
+          $scope.commenting = {};
+          $http.get('http://localhost:5000/posts/' + id, {headers: {token: $cookies.get('token')}}).then(function (res) {
+            $scope.posts = res.data.posts;
+          });
+        }
+      });
+    };
 
     $http.get('http://localhost:5000/event/' + id, {headers: {token: $cookies.get('token')}}).then(function (res) {
       $scope.event = res.data.event;
@@ -33,12 +51,12 @@ module.exports = {
             text: $scope.newPostContent,
             userId: res.data.id,
             eventId: $scope.event._id,
-            images: images,
-            parentId: "hi"
+            images: images
           };
 
           $http.post('http://localhost:5000/posts/' + $scope.event._id, obj, {headers: {token: $cookies.get('token')}}).then(function (res) {
             if (res.data.success) {
+              $scope.newPostContent = '';
               $http.get('http://localhost:5000/posts/' + $scope.event._id, {headers: {token: $cookies.get('token')}}).then(function (res) {
                 if (res.data.success) {
                   $scope.posts = res.data.posts;
@@ -53,42 +71,11 @@ module.exports = {
     $scope.deletePost = function (id) {
       $http.delete('http://localhost:5000/posts/' + id, {headers: {token: $cookies.get('token')}}).then(function (res) {
         if (res.data.success) {
-          $http.get('http://localhost:5000/posts/' + $scope.event._id, {headers: {token: $cookies.get('token')}}).then(function (getRes) {
-            if (getRes.data.success) {
-              $scope.posts = res.data.posts;
-            }
+          $http.get('http://localhost:5000/posts/' + $stateParams.id, {headers: {token: $cookies.get('token')}}).then(function (res) {
+            $scope.posts = res.data.posts;
           });
         }
       });
-    };
-
-    $scope.postVisible = function (id, state) {
-      $scope.comments = [
-        {
-          author: 'Cole',
-          data: 'You are soooo right!'
-        },
-        {
-          author: 'Kevin',
-          data: 'Nah, it sucked'
-        }
-      ];
-      if (state) {
-        // $http.get("http://localhost:5000/comments/" + id, {headers: {token: $cookies.get('token')}}).then(function (res) {
-        //   if (res.data.success) {
-        //     $scope.comments = res.data.comments;
-        //   }
-        // });
-      } else {
-        $scope.comments = [];
-      }
-
-      for (var i = 0; i < $scope.posts.length; i++) {
-        if ($scope.posts[i]._id === id) {
-          $scope.posts[i].visible = state;
-          break;
-        }
-      }
     };
   }
 };

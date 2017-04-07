@@ -1,10 +1,16 @@
 <div class="max-width">
     <div as-card as-m-t="8">
         <div as-p-xy="4">
+            <div as-f="l normal" class="text-center">
+                🔥 🔥 You've been invited to an event! 🔥 🔥
+            </div>
             <div as-f="l bold" class="text-center">
-                Can you go to this event?
+                {{info.title}}
             </div>
 
+            <div as-f="m normal" class="text-center">
+                Can you go?
+            </div>
             <div class="row" as-m-t="4">
                 <div class="col-sm-4">
                     <button as-i-button-good ng-click="sendResponse('yes')">Yes</button>

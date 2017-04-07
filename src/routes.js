@@ -36,6 +36,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         user: mustBeLoggedIn
       }
     })
+    .state('app.notifications', {
+      url: 'notifications',
+      component: 'notifications',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
     .state('app.profile', {
       url: 'profile',
       component: 'profile',
