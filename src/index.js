@@ -18,6 +18,7 @@ var discussion = require('./app/discussion/discussion');
 var info = require('./app/info/info');
 var feed = require('./app/feed/feed');
 var apps = require('./app/apps/apps');
+var invite = require('./app/invite/invite');
 
 require('angular-ui-router');
 require('angular-jwt');
@@ -53,4 +54,5 @@ angular
   .component('info', info)
   .component('feed', feed)
   .component('apps', apps)
+  .component('invite', invite)
   .component('myprofile', myprofile);

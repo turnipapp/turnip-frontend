@@ -37,6 +37,27 @@
     <div as-p-xy="4">
       <div as-f="m bold">{{post.userId}}<span as-f="s normal"> - {{post.timestamp | date:'MMMM d, yyyy'}}<span style="color:red" as-p-l="3" ng-if="isHost" ng-click="deletePost(post._id)">Delete</span></span></div>
       <div as-p-t="2">{{post.text}}</div>
+
+    </div>
+    <div class="post-comment">
+      <div ng-repeat="comment in tmpcomments" as-m-b="3">
+        <div as-f="m bold">
+          {{comment.author}}
+        </div>
+        <div as-m-t="1">
+          {{comment.body}}
+        </div>
+      </div>
+      <div ng-if="post.isCommenting">
+        
+      </div>
+      <textarea></textarea>
+      <div ng-if="post.isCommenting">
+
+      </div>
+      <div ng-if="!post.isCommenting">
+        <button as-i-button-gray as-m-t="2" ng-click="post.isCommenting = true">Comment</button>
+      </div>
     </div>
   </div>
 </div>

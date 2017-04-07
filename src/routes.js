@@ -110,6 +110,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/login',
       component: 'login'
     })
+    .state('invite', {
+      url: '/invite/:id',
+      component: 'invite'
+    })
     .state('signup', {
       url: '/signup',
       component: 'signup'

@@ -33,7 +33,8 @@ module.exports = {
             text: $scope.newPostContent,
             userId: res.data.id,
             eventId: $scope.event._id,
-            images: images
+            images: images,
+            parentId: "hi"
           };
 
           $http.post('http://localhost:5000/posts/' + $scope.event._id, obj, {headers: {token: $cookies.get('token')}}).then(function (res) {
