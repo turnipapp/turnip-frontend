@@ -1,0 +1,27 @@
+<div class="max-width">
+    <div as-card as-m-t="8">
+        <div as-p-xy="4">
+            <div as-f="l normal" class="text-center">
+                🔥 🔥 You've been invited to an event! 🔥 🔥
+            </div>
+            <div as-f="l bold" class="text-center">
+                {{info.title}}
+            </div>
+
+            <div as-f="m normal" class="text-center">
+                Can you go?
+            </div>
+            <div class="row" as-m-t="4">
+                <div class="col-sm-4">
+                    <button as-i-button-good ng-click="sendResponse('yes')">Yes</button>
+                </div>
+                <div class="col-sm-4">
+                    <button as-i-button ng-click="sendResponse('maybe')">Maybe</button>
+                </div>
+                <div class="col-sm-4">
+                    <button as-i-button-bad ng-click="sendResponse('no')">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

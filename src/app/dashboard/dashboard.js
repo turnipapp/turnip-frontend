@@ -34,7 +34,6 @@ module.exports = {
         $rootScope.profileSelected = '';
         $rootScope.createSelected = 'selected';
       } else if (tab === '/') {
-        console.log("hi");
         $rootScope.eventSelected = '';
         $rootScope.feedSelected = '';
         $rootScope.profileSelected = '';

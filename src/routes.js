@@ -36,6 +36,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         user: mustBeLoggedIn
       }
     })
+    .state('app.notifications', {
+      url: 'notifications',
+      component: 'notifications',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
     .state('app.profile', {
       url: 'profile',
       component: 'profile',
@@ -109,6 +116,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('login', {
       url: '/login',
       component: 'login'
+    })
+    .state('invite', {
+      url: '/invite/:id',
+      component: 'invite'
     })
     .state('signup', {
       url: '/signup',

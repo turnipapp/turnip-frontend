@@ -33,8 +33,6 @@ module.exports = {
             }
           }
         });
-      } else {
-        console.log("Go away, Hacker!");
       }
     };
 

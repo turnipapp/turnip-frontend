@@ -1,4 +1,15 @@
-<div as-card as-p-xy="4">
+<div as-card as-m-b="4">
+    <div as-p-xy="4">
+        <div as-f="l bold">
+            {{event.title}}
+        </div>
+        <div as-f="m normal">
+            {{event.dateStart | date:'MMMM d, yyyy'}} -
+            {{event.dateEnd | date:'MMMM d, yyyy'}}
+        </div>
+    </div>
+</div>
+<div as-card as-p-xy="4" ng-if="isHost">
     <div class="row">
         <div class="col-sm-6 no-margin">
             <div as-f="l bold">Delete this event</div>
@@ -11,7 +22,7 @@
         <div class="col-sm-6 no-margin">
             <div class="col-sm-8"></div>
             <div class="col-sm-4 no-margin">
-                <button as-i-button-bad>Delete</button>
+                <button as-i-button-bad ng-click="delete()">Delete</button>
             </div>
         </div>
     </div>
