@@ -3,24 +3,22 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#ECE8E7;}
-	.st1{fill:#33364E;}
-	.st2{fill:#877A96;}
-	.st3{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st0{fill:#33364E;}
+	.st1{fill:#877A96;}
+	.st2{fill:none;stroke:#000000;stroke-miterlimit:10;}
 </style>
-<rect class="st0" width="1920" height="1080"/>
 <g id="XMLID_1_">
 	<g>
-		<path class="st1" d="M1920,686.2V1080h-580.5c-16.8-20.7-197.7-137.1-433.4-210.5L1920,686.2z"/>
-		<path class="st1" d="M1920,686.2L906.1,869.5C920.8,849.1,1349.3,656.3,1920,686.2z"/>
-		<polygon class="st2" points="1339.5,1080 0,1080 0,741.9 		"/>
-		<path class="st2" d="M1339.5,1080L0,741.9c255.9,9.2,487.3,28.1,791.8,96.8c39.2,8.9,77.4,19.3,114.3,30.8
+		<path class="st0" d="M1920,686.2V1080h-580.5c-16.8-20.7-197.7-137.1-433.4-210.5L1920,686.2z"/>
+		<path class="st0" d="M1920,686.2L906.1,869.5C920.8,849.1,1349.3,656.3,1920,686.2z"/>
+		<polygon class="st1" points="1339.5,1080 0,1080 0,741.9 		"/>
+		<path class="st1" d="M1339.5,1080L0,741.9c255.9,9.2,487.3,28.1,791.8,96.8c39.2,8.9,77.4,19.3,114.3,30.8
 			C1141.9,942.9,1322.8,1059.3,1339.5,1080z"/>
 	</g>
 	<g>
 	</g>
 </g>
-<line class="st3" x1="0" y1="251" x2="0" y2="741.9"/>
-<line class="st3" x1="1920" y1="0" x2="0" y2="0"/>
-<line class="st3" x1="1920" y1="686.2" x2="1920" y2="251"/>
+<line class="st2" x1="0" y1="251" x2="0" y2="741.9"/>
+<line class="st2" x1="1920" y1="0" x2="0" y2="0"/>
+<line class="st2" x1="1920" y1="686.2" x2="1920" y2="251"/>
 </svg>
