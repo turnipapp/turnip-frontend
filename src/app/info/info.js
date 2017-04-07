@@ -4,9 +4,15 @@ module.exports = {
     $http.get("http://localhost:5000/event/" + $stateParams.id, {headers: {token: $cookies.get('token')}}).then(function (res) {
       if (res.data.success) {
         $scope.event = res.data.event;
-        console.log(res.data);
       }
     });
+
+    $http.get('http://localhost:5000/event/' + $stateParams.id + '/role', {headers: {token: $cookies.get('token')}}).then(function (res) {
+      if (res.data.success) {
+        $scope.isHost = res.data.role === 'host';
+      }
+    });
+
     $scope.delete = function () {
       $http.delete("http://localhost:5000/event/" + $stateParams.id, {headers: {token: $cookies.get('token')}}).then(function (res) {
         if (res.data.success) {

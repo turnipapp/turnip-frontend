@@ -11,7 +11,6 @@ module.exports = {
           }
         }
         $scope.notifications = clean;
-        console.log(clean);
       }
     });
   }
