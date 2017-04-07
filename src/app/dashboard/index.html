@@ -7,6 +7,10 @@
             <img ng-src=require("../../images/events.svg ") width="22px" height="auto"/>
             Events
         </div>
+        <div class="nav-item" ui-sref=".notifications" ng-class="$root.notificationsSelected" ng-click="setSelectedClass('/notifications')">
+            <img ng-src=require("../../images/feed.svg ") width="20px" height="auto"/>
+            Notifications
+        </div>
         <div class="nav-item" ui-sref=".feed" ng-class="$root.feedSelected" ng-click="setSelectedClass('/feed')">
             <img ng-src=require("../../images/feed.svg ") width="20px" height="auto"/>
             Feed
