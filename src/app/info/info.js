@@ -2,7 +2,6 @@ module.exports = {
   template: require('./index.html'),
   controller: function ($scope, $http, $cookies, $stateParams, $state) {
     $scope.setTab = function (tab) {
-      console.log(tab);
       $scope.guestTabs.current = tab.name;
       for (var i = 0; i < $scope.guestTabs.tabs.length; i++) {
         if ($scope.guestTabs.tabs[i].name === tab.name) {
