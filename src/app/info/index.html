@@ -22,16 +22,64 @@
         </div>
     </div>
 </div>
+
+<!-- GUEST REPLYS -->
+<div as-m-b="2">
+    <span as-f="l bold">Guests</span>
+</div>
 <div as-card as-m-b="4">
-    <div as-p-xy="4">
-        <div as-f="l bold">
-            Invited Guests
+    <div role="tablist" class="card-tabs row">
+        <div ng:click="selected = 1" ng-class="{selected: selected == 1}" ng-init="selected=1" class="col-sm-3 tab">Yes</div>
+        <div ng:click="selected = 2" ng-class="{selected: selected == 2}" class="col-sm-3 tab">Maybe</div>
+        <div ng:click="selected = 3" ng-class="{selected: selected == 3}" class="col-sm-3 tab">No</div>
+        <div ng:click="selected = 4" ng-class="{selected: selected == 4}" class="col-sm-3 tab">Pending</div>
+    </div>
+    <div ng:show="selected == 1">
+        <div as-p-xy="4" class="text-center" ng-if="guests.yes.length == 0">
+            No one has said yes.
         </div>
-        <div ng-repeat="guest in guests.guests">
-            {{guest.username}}
+        <div ng-if="guests.yes.length != 0">
+            <div ng-repeat="guest in guests.yes" as-p-xy="4">
+                {{guest}}
+            </div>
+        </div>
+    </div>
+
+    <div ng:show="selected == 2">
+        <div as-p-xy="4" class="text-center" ng-if="guests.no.length == 0">
+            No one has said no.
+        </div>
+        <div ng-if="guests.maybe.length != 0">
+            <div ng-repeat="guest in guests.maybe" as-p-xy="4">
+                {{guest}}
+            </div>
+        </div>
+    </div>
+
+    <div ng:show="selected == 3">
+        <div as-p-xy="4" class="text-center" ng-if="guests.maybe.length == 0">
+            No one has said maybe.
+        </div>
+        <div ng-if="guests.no.length != 0">
+            <div ng-repeat="guest in guests.no" as-p-xy="4">
+                {{guest}}
+            </div>
+        </div>
+    </div>
+
+    <div ng:show="selected == 4">
+        <div as-p-xy="4" class="text-center" ng-if="guests.pending.length == 0">
+            There are no pending invites.
+        </div>
+        <div ng-if="guests.pending.length != 0">
+            <div ng-repeat="guest in guests.pending" as-p-xy="4">
+                {{guest}}
+            </div>
         </div>
     </div>
 </div>
+
+<!-- DELETE BUTTON -->
 <div as-card as-p-xy="4" ng-if="isHost">
     <div class="row">
         <div class="col-sm-6 no-margin">
