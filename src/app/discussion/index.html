@@ -17,13 +17,6 @@
     <textarea ng-model="newPostContent" placeholder="Share something..."></textarea>
     <div as-p-xy="2" class="row">
         <button as-i-button-good ng-click="newPost()">Post</button>
-
-        <!-- <div class="col-sm-6 no-margin" as-p-r="2">
-            <button as-i-button ng-click="newPost()">Upload</button>
-        </div>
-        <div class="col-sm-6 no-margin" as-p-="2">
-            <button as-i-button-good ng-click="newPost()">Post</button>
-        </div> -->
     </div>
 </div>
 
@@ -31,7 +24,6 @@
     <div class="text-center" as-m-t="4">
         There are no posts yet
     </div>
-
 </div>
 
 <div ng-repeat="post in posts">
@@ -39,6 +31,9 @@
     <div as-p-xy="4">
       <div as-f="m bold">{{post.userId}}<span as-f="s normal"> - {{post.timestamp | date:'MMMM d, yyyy'}}<span style="color:red" as-p-l="3" ng-if="isHost" ng-click="deletePost(post._id)">Delete</span></span></div>
       <div as-p-t="2">{{post.text}}</div>
+    </div>
+    <div class="like-box" ng-click="like(post)">
+      <i class="fa fa-thumbs-up"></i> Like {{post.likes}}
     </div>
     <div class="post-comment">
       <div ng-repeat="comment in post.comments" as-m-b="3">
