@@ -113,6 +113,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         user: mustBeLoggedIn
       }
     })
+    .state('app.event.memories', {
+      url: '/memories',
+      component: 'memories',
+      resolve: {
+        user: mustBeLoggedIn
+      }
+    })
     .state('login', {
       url: '/login',
       component: 'login'

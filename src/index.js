@@ -19,6 +19,7 @@ var info = require('./app/info/info');
 var feed = require('./app/feed/feed');
 var apps = require('./app/apps/apps');
 var invite = require('./app/invite/invite');
+var memories = require('./app/memories/memories');
 var notifications = require('./app/notifications/notifications');
 
 require('angular-ui-router');
@@ -58,4 +59,5 @@ angular
   .component('apps', apps)
   .component('invite', invite)
   .component('notifications', notifications)
+  .component('memories', memories)
   .component('myprofile', myprofile);

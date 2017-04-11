@@ -77,5 +77,16 @@ module.exports = {
         }
       });
     };
+
+    $scope.like = function (post) {
+      var token = $cookies.get('token');
+      console.log(token);
+      var body = {};
+      $http.post('http://localhost:5000/posts/' + post._id + '/like', body, {headers: {token: token}}).then(function (res) {
+        if (res.data.success) {
+          post.likes = res.data.likes;
+        }
+      });
+    };
   }
 };
