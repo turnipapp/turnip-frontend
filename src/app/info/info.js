@@ -12,8 +12,13 @@ module.exports = {
       }
     };
 
-    $scope.guests = {};
-    $scope.$watch('guests', function () {});
+    $scope.guests = {
+      yes: ["Loading..."],
+      no: ["Loading..."],
+      maybe: ["Loading..."],
+      pending: ["Loading..."]
+    };
+    // $scope.$watch('guests', function () {});
 
     $http.get("http://localhost:5000/event/" + $stateParams.id + "/getInviteStatus", {headers: {token: $cookies.get('token')}}).then(function (res) {
       if (res.data.success) {
