@@ -23,6 +23,30 @@
     </div>
 </div>
 
+<!-- WEATHER -->
+<div as-card as-m-b="4">
+    <div as-p-xy="4">
+        <div class="row text-center">
+            <div class="col-sm-6">
+                <div as-f="l bold">
+                    Weather Forecast
+                </div>
+                <div as-f="m normal">
+                    {{event.dateStart | date:'MMMM d, yyyy'}}
+                </div>
+                <div as-f="m bold" style="margin-top: 10px">
+                </div>
+                <div as-f="m normal">
+                    Temperature: {{weather.temperature}}
+                </div>
+                <div as-f="m normal">
+                    Chance of Rain: {{weather.precipProbability}}%
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- GUEST REPLYS -->
 <div as-m-b="2">
     <span as-f="l bold">Guests</span>
