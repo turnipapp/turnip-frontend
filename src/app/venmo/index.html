@@ -1,3 +1,35 @@
 <div as-f="m bold">
     Venmo
 </div>
+<div ng-if="role == 'host'" as-m-t="4">
+    <div as-card class="row" as-p-y="4">
+        <div class="col-sm-6 no-margin text-center">
+            <div as-f="s bold">
+                Percent Paid
+            </div>
+            <div as-f="xl normal">
+                100%
+            </div>
+        </div>
+        <div class="col-sm-6 no-margin text-center">
+            <div as-f="s bold">
+                Dollars collected
+            </div>
+            <div as-f="xl normal">
+                $20.00
+            </div>
+        </div>
+    </div>
+
+    <div as-card as-m-t="4">
+        <div ng-repeat="person in peoplePaid" as-p-xy="4" class="song">
+            {{person.name}}
+        </div>
+        <div ng-if="peoplePaid.length == 0" class="text-center" as-p-xy="4">
+            No one has paid yet
+        </div>
+    </div>
+</div>
+<div ng-if="role != 'host'" as-m-t="4">
+    <button as-i-button-good>Pay</button>
+</div>
