@@ -6,7 +6,7 @@ module.exports = {
         if (res.data.success) {
           $scope.lineup = res.data.lineup;
         }
-     });
+      });
     }
 
     getLineup();
@@ -19,15 +19,7 @@ module.exports = {
 
     $scope.results = [];
     $scope.searchSong = function () {
-      //$scope.results = [{artist: "Eric Clapton", songName: "Shitty Song"}, {artist: "Shakey Graves", songName: "Noice"}, {artist: "Michael Jackson", songName: "Little Boys"}, {artist: "Adele", songName: "Shit IDK"}, {artist: "Pink Floyd", songName: "Wish You Weren't Here"}];
-      $http.get('http://localhost:5000/spotify/search/' + $scope.search, {headers: {token: $cookies.get('token')}}).then(function (res) {
-        if (res.data.success) {
-          $scope.results = res.data.results;
-        }
-        });
 
-      $scope.results = [];
-      $scope.results.push($scope.search);
     };
 
     $scope.lineup = [];
@@ -37,12 +29,13 @@ module.exports = {
       var postBody = {
         eventId: $stateParams.id,
         songId: result.id
-      }
-       $http.post('http://localhost:5000/spotify/', postBody, {headers: {token: $cookies.get('token')}}).then(function (res) {
-         if (res.data.success) {
-           getLineup();
-         }
-       };
+      };
+      $http.post('http://localhost:5000/spotify/', postBody, {headers: {token: $cookies.get('token')}}).then(function (res) {
+        if (res.data.success) {
+          getLineup();
+        }
+      });
+    };
 
     $scope.removeSong = function (result) {
       var i = $scope.lineup.indexOf(result);
@@ -50,5 +43,19 @@ module.exports = {
         $scope.lineup.splice(i, 1);
       }
     };
+
+    var canSearch = true;
+    $scope.$watch('search', function () {
+      if (canSearch && angular.isDefined($scope.search)) {
+        // canSearch = false;
+        $scope.results = [{artist: "Eric Clapton", songName: "Shitty Song"}, {artist: "Shakey Graves", songName: "Noice"}, {artist: "Michael Jackson", songName: "Little Boys"}, {artist: "Adele", songName: "Shit IDK"}, {artist: "Pink Floyd", songName: "Wish You Weren't Here"}];
+        // $http.get('http://localhost:5000/spotify/search/' + $scope.search, {headers: {token: $cookies.get('token')}}).then(function (res) {
+        //   if (res.data.success) {
+        //     canSearch = true;
+        //     $scope.results = res.data.results;
+        //   }
+        // });
+      }
+    });
   }
 };
