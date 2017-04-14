@@ -101,3 +101,9 @@
 .tag:nth-child(even) {
     background: #F9F7F6;
 }
+.song {
+    padding: 8px 0;
+}
+.song:nth-child(even) {
+    background: #F9F7F6;
+}

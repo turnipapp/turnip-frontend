@@ -1,35 +1,56 @@
 <div as-m-t="4">
-  <div as-f="xl bold"><center>{{event.title}}'s Playlist</center></div>
+    <div as-f="xl bold">
+        <center>{{event.title}}'s Playlist</center>
+    </div>
     <div as-m-y="8">
-      <div as-f="l bold">Add a song</div>
-          <div as-p-y="2">
-            <div class="col-sm-10 no-margin" as-p-r="2">
-                <input ng-model="search" as-i-text placeholder="Song name"/>
+        <div as-p-y="2" class="row">
+            <div class="col-sm-12 no-margin">
+                <input ng-model="search" as-i-text placeholder="Search for a song..."/>
             </div>
-            <div class="col-sm-2 no-margin" as-p-l="2">
-                <button as-i-button ng-click="searchSong()">Search</button>
+        </div>
+        <!-- HIDDEN PORTION -->
+        <div ng-if="results.length > 0" as-f="m normal">
+            <div as-card>
+                <div class="songs">
+                    <div ng-repeat="result in results | limitTo:5" as-f="m normal" class="row song">
+                        <div class="col-sm-1 no-margin text-center">
+                            <img ng-click="addSong(result)" ng-src=require("../../images/addSong.svg ") width="17px" height="auto"/>
+                        </div>
+                        <div class="col-sm-4 no-margin">
+                            {{result.artist}}
+                        </div>
+                        <div class="col-sm-7 no-margin">
+                            {{result.songName}}
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- HIDDEN PORTION -->
-          <div ng-if="results.length > 0" as-f="m normal">Results
-              <div as-card as-p-xy="4">
-                  <div class="songs">
-                      <div ng-repeat="result in results" as-f="m normal">
-                          <img ng-click="addSong(result)" ng-src=require("../../images/addSong.svg ") width="17px" height="auto"/>
-                          {{result.artist}} - {{result.songName}}
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- HIDDEN PORTION -->
+        </div>
+        <!-- HIDDEN PORTION -->
     </div>
     <div as-f="l bold">Current Lineup</div>
-      <div as-card as-p-xy="4">
-          <div class="lineup">
-            <div ng-repeat="song in lineup" as-f="m normal">
-                <img ng-click="removeSong(song)" ng-src=require("../../images/removeSong.svg ") width="17px" height="auto"/>
-                {{song.artist}} - {{song.songName}} added by {{userData.firstName}}
+    <div as-card as-p-xy="4" ng-if="lineup.length == 0">
+        <div class="text-center">
+            No songs have been added
+        </div>
+    </div>
+    <div as-card ng-if="lineup.length > 0">
+        <div class="lineup">
+            <div ng-repeat="song in lineup" as-f="m normal" class="row song">
+                <div class="col-sm-1 no-margin text-center">
+                    <img ng-click="removeSong(song)" ng-src=require("../../images/removeSong.svg ") width="17px" height="auto"/>
+                </div>
+                <div class="col-sm-4 no-margin">
+                    {{song.artist}}
+                </div>
+                <div class="col-sm-5 no-margin">
+                    {{song.songName}}
+                </div>
+                <div class="col-sm-2">
+                    Cole
+                    {{song.addedBy}}
+                </div>
             </div>
-          </div>
-      </div>
+        </div>
+    </div>
 </div>
