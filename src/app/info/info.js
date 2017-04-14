@@ -49,6 +49,7 @@ module.exports = {
     $http.get('http://localhost:5000/weather/get/' + $stateParams.id, {headers: {token: $cookies.get('token')}}).then(function (res) {
       if (res.data.success) {
         $scope.weather = res.data.weather.body.currently;
+        $scope.location = res.data.location;
       }
     });
 
