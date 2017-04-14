@@ -87,3 +87,17 @@
 .like-box:hover {
     background: #F9F7F6;
 }
+.tags {
+    position: relative;
+    left: -210px;
+    width: 200px;
+    background: #fff;
+    top: -160px;
+}
+.tag {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+.tag:nth-child(even) {
+    background: #F9F7F6;
+}

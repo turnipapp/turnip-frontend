@@ -80,7 +80,6 @@ module.exports = {
 
     $scope.like = function (post) {
       var token = $cookies.get('token');
-      console.log(token);
       var body = {};
       $http.post('http://localhost:5000/posts/' + post._id + '/like', body, {headers: {token: token}}).then(function (res) {
         if (res.data.success) {
@@ -88,5 +87,51 @@ module.exports = {
         }
       });
     };
+
+    $scope.guests = [];
+    $http.get("http://localhost:5000/event/" + $stateParams.id + "/getInviteStatus", {headers: {token: $cookies.get('token')}}).then(function (res) {
+      if (res.data.success) {
+        var i;
+        for (i = 0; i < res.data.yes.length; i++) {
+          $scope.guests.push(res.data.yes[i]);
+        }
+        for (i = 0; i < res.data.no.length; i++) {
+          $scope.guests.push(res.data.no[i]);
+        }
+        for (i = 0; i < res.data.maybe.length; i++) {
+          $scope.guests.push(res.data.maybe[i]);
+        }
+        for (i = 0; i < res.data.pending.length; i++) {
+          $scope.guests.push(res.data.pending[i]);
+        }
+      }
+    });
+
+    $scope.tags = [];
+    $scope.$watch('newPostContent', function () {
+      if (angular.isDefined($scope.newPostContent) && $scope.newPostContent.includes('@')) {
+        var indexOfAt = $scope.newPostContent.indexOf('@');
+        var afterAt = $scope.newPostContent.substring(indexOfAt + 1);
+        var tagString;
+        if (afterAt.includes(' ')) {
+          tagString = afterAt.substring(0, afterAt.indexOf(' '));
+        } else {
+          tagString = afterAt;
+        }
+        if (tagString.length > 0) {
+          $scope.tags = [];
+          for (var i = 0; i < $scope.guests.length; i++) {
+            var lc = $scope.guests[i].toLowerCase();
+            if (lc.includes(tagString.toLowerCase())) {
+              $scope.tags.push($scope.guests[i]);
+            }
+          }
+        } else {
+          $scope.tags = $scope.guests;
+        }
+      } else {
+        $scope.tags = [];
+      }
+    });
   }
 };

@@ -15,6 +15,9 @@
 
 <div class="new-post" as-m-t="4">
     <textarea ng-model="newPostContent" placeholder="Share something..."></textarea>
+    <div ng-repeat="tag in tags | limitTo:5" ng-click="addTag(tag)" as-p-x="4" class="tag">
+      {{tag}}
+    </div>
     <div as-p-xy="2" class="row">
         <button as-i-button-good ng-click="newPost()">Post</button>
     </div>
