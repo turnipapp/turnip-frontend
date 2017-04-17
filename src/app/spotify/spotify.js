@@ -5,7 +5,6 @@ module.exports = {
     function getLineup() {
       $http.get('http://localhost:5000/spotify/' + $stateParams.id, {headers: {token: $cookies.get('token')}}).then(function (res) {
         if (res.data.success) {
-          console.log(res.data);
           $scope.lineup = res.data.songs;
         }
       });
@@ -19,6 +18,16 @@ module.exports = {
         $scope.event = res.data.event;
       }
     });
+
+    $scope.openInSpotify = function () {
+      // Gets the spotify url
+      $http.get("http://localhost:5000/spotify/" + $stateParams.id + '/url', {headers: {token: $cookies.get('token')}}).then(function (res) {
+        if (res.data.success) {
+          var win = window.open(res.data.url, '_blank');
+          win.focus();
+        }
+      });
+    };
 
     // Add songs to the event's playlist
     $scope.addSong = function (result) {
@@ -42,6 +51,12 @@ module.exports = {
       if (i !== -1) {
         $scope.lineup.splice(i, 1);
       }
+
+      $http.delete('http://localhost:5000/spotify/' + $stateParams.id + '/' + result.songId, {headers: {token: $cookies.get('token')}}).then(function (res) {
+        if (!res.data.success) {
+          $scope.lineup.splice(i, 0, result);
+        }
+      });
     };
 
     // Function to live search

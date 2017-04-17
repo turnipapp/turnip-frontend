@@ -1,6 +1,11 @@
 <div as-m-t="4">
-    <div as-f="xl bold">
-        <center>{{event.title}}'s Playlist</center>
+    <div as-f="xl bold" class="row">
+        <div class="col-sm-8 no-margin">
+            {{event.title}}'s Playlist
+        </div>
+        <div class="col-sm-4 no-margin" ng-if="lineup.length > 0">
+            <button as-i-button-good ng-click="openInSpotify()">Open in spotify</button>
+        </div>
     </div>
     <div as-m-y="8">
         <div as-p-y="2" class="row">
