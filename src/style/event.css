@@ -49,7 +49,7 @@
 }
 .post-comment {
     background: #F9F7F6;
-    padding: 16px;
+    /*padding: 16px;*/
 }
 .post-comment textarea {
     width: 100%;
@@ -73,7 +73,7 @@
 .card-tabs .selected {
     background: #fff;
 }
-.like-box {
+.action-box {
     width: 100%;
     padding: 8px 0px;
     text-align: center;
@@ -84,8 +84,12 @@
     font-weight: bold;
     outline: none;
 }
-.like-box:hover {
-    background: #F9F7F6;
+.action {
+    outline: none;
+    user-select: none;
+}
+.action:not(:first-child) {
+    border-left: 1px solid #C1BDB9;
 }
 .tags {
     position: relative;

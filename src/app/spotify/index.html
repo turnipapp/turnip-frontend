@@ -17,10 +17,13 @@
                             <img ng-click="addSong(result)" ng-src=require("../../images/addSong.svg ") width="17px" height="auto"/>
                         </div>
                         <div class="col-sm-4 no-margin">
+                            {{result.track}}
+                        </div>
+                        <div class="col-sm-4 no-margin">
                             {{result.artist}}
                         </div>
-                        <div class="col-sm-7 no-margin">
-                            {{result.songName}}
+                        <div class="col-sm-3 no-margin">
+                            {{result.album}}
                         </div>
                     </div>
                 </div>
@@ -41,14 +44,13 @@
                     <img ng-click="removeSong(song)" ng-src=require("../../images/removeSong.svg ") width="17px" height="auto"/>
                 </div>
                 <div class="col-sm-4 no-margin">
-                    {{song.artist}}
+                    {{song.track}}
                 </div>
                 <div class="col-sm-5 no-margin">
-                    {{song.songName}}
+                    {{song.artist}}
                 </div>
                 <div class="col-sm-2">
-                    Cole
-                    {{song.addedBy}}
+                    {{song.userName}}
                 </div>
             </div>
         </div>

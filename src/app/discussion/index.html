@@ -35,11 +35,18 @@
       <div as-f="m bold">{{post.name}}<span as-f="s normal"> - {{post.timestamp | date:'MMMM d, yyyy'}}<span style="color:red" as-p-l="3" ng-if="isHost" ng-click="deletePost(post._id)">Delete</span></span></div>
       <div as-p-t="2">{{post.text}}</div>
     </div>
-    <div class="like-box" ng-click="like(post)">
-      <i class="fa fa-thumbs-up"></i> Like {{post.likes}}
+    <div class="action-box">
+      <div class="row">
+          <div class="col-xs-6 action" ng-click="like(post)">
+              <i class="fa fa-thumbs-up"></i> Like {{post.likes}}
+          </div>
+          <div class="col-xs-6 action" ng-click="post.isCommenting = true">
+              <i class="fa fa-comment"></i> Comment
+          </div>
+      </div>
     </div>
     <div class="post-comment">
-      <div ng-repeat="comment in post.comments" as-m-b="3">
+      <div ng-repeat="comment in post.comments" as-p-xy="4">
         <div>
           <span as-f="m bold">{{comment.author}}</span><span as-f="s normal"> - {{comment.timestamp | date:'MMMM d, yyyy'}}</span>
         </div>
@@ -47,14 +54,9 @@
           {{comment.body}}
         </div>
       </div>
-      <div ng-if="post.isCommenting">
+      <div ng-if="post.isCommenting" as-p-xy="4">
           <textarea ng-model="commenting.body"></textarea>
-      </div>
-      <div ng-if="post.isCommenting">
-        <button as-i-button as-m-t="2" ng-click="post.isCommenting = false; addComment(post._id)">Comment</button>
-      </div>
-      <div ng-if="!post.isCommenting">
-        <button as-i-button-gray as-m-t="2" ng-click="post.isCommenting = true">Click to add Comment</button>
+          <button as-i-button as-m-t="2" ng-click="post.isCommenting = false; addComment(post._id)">Comment</button>
       </div>
     </div>
   </div>
