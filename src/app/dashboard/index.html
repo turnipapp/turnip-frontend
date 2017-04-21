@@ -4,24 +4,36 @@
     </div>
     <nav>
         <div class="nav-item" ui-sref=".events" ng-class="$root.eventSelected" ng-click="setSelectedClass('/events')">
-            <img ng-src=require("../../images/events.svg ") width="22px" height="auto"/>
-            Events
+            <!-- <img ng-src=require("../../images/events.svg ") width="22px" height="auto"/> -->
+            <i class="fa fa-calendar-o fa-2x"></i>
+            <div class="label">
+                Events
+            </div>
         </div>
-        <div class="nav-item" ui-sref=".notifications" ng-class="$root.notiSelected" ng-click="setSelectedClass('/notifications')">
+        <!-- <div class="nav-item" ui-sref=".notifications" ng-class="$root.notiSelected" ng-click="setSelectedClass('/notifications')">
             <img ng-src=require("../../images/feed.svg ") width="20px" height="auto"/>
             Notifications
-        </div>
+        </div> -->
         <div class="nav-item" ui-sref=".feed" ng-class="$root.feedSelected" ng-click="setSelectedClass('/feed')">
-            <img ng-src=require("../../images/feed.svg ") width="20px" height="auto"/>
-            Feed
+            <!-- <img ng-src=require("../../images/feed.svg ") width="20px" height="auto"/> -->
+            <i class="fa fa-list-alt fa-2x"></i>
+            <div class="label">
+                Feed
+            </div>
         </div>
         <div class="nav-item" ui-sref=".profile" ng-class="$root.profileSelected" ng-click="setSelectedClass('/profile')">
-            <img ng-src=require("../../images/myProfile.svg ") width="22px" height="auto"/>
-            Profile
+            <!-- <img ng-src=require("../../images/myProfile.svg ") width="22px" height="auto"/> -->
+            <i class="fa fa-user fa-2x"></i>
+            <div class="label">
+                Profile
+            </div>
         </div>
         <div class="nav-item" ui-sref=".create" ng-class="$root.createSelected" ng-click="setSelectedClass('/create')">
-            <img ng-src=require("../../images/createEvent.svg ") width="22px" height="auto"/>
-            Create
+            <!-- <img ng-src=require("../../images/createEvent.svg ") width="22px" height="auto"/> -->
+            <i class="fa fa-plus fa-2x"></i>
+            <div class="label">
+                Create
+            </div>
         </div>
     </nav>
 </header>
