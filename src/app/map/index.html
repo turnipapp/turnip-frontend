@@ -1,10 +1,12 @@
 <div as-f="xl normal">
     <div as-p-b="4"><center>Directions to {{event.title}}</center></div>
-    <span id="address" style="display:none">{{event.location.results[0].formatted_address}}</span>
-    <span id="latitude" style="display:none">{{event.location.results[0].geometry.location.lat}}</span>
-    <span id="longitude" style="display:none">{{event.location.results[0].geometry.location.lng}}</span>
+    <span id="address" style="display:none">{{event.location.formatted_address}}</span>
+    <span id="latitude" style="display:none">{{event.location.geometry.location.lat}}</span>
+    <span id="longitude" style="display:none">{{event.location.geometry.location.lng}}</span>
 </div>
-<div id="map" style="width: 100%; height: 500px"></div>
+<div id="map" style="width: 100%; height: 500px">
+Loading...
+</div>
 <div id="directions" style="width:100%"></div>
 
 <script type="text/javascript">
