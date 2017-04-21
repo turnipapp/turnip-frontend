@@ -1,4 +1,99 @@
-<div as-f="m bold">
-    Google Maps
+<div as-f="xl normal">
+    <div as-p-b="4"><center>Directions to {{event.title}}</center></div>
+    <span id="address" style="display:none">{{event.location.results[0].formatted_address}}</span>
+    <span id="latitude" style="display:none">{{event.location.results[0].geometry.location.lat}}</span>
+    <span id="longitude" style="display:none">{{event.location.results[0].geometry.location.lng}}</span>
 </div>
-<img src="http://i.imgur.com/sVcr8Af.png" width="100%" as-m-t="4"/>
+<div id="map" style="width: 100%; height: 500px"></div>
+<div id="directions" style="width:100%"></div>
+
+<script type="text/javascript">
+    var address;
+    var latitude;
+    var longitude;
+    var myLatlng;
+    setTimeout(function (){
+        address = $("#address").text();
+        latitude = parseFloat($("#latitude").text());
+        longitude = parseFloat($("#longitude").text());
+        myLatlng = new google.maps.LatLng(latitude,longitude);
+        init();
+    }, 500);
+    var map;
+    var directionsService;
+    var directionsDisplay;
+    var userLat;
+    var userLong;
+
+    function init() {
+        var geoSuccess = function(position) {
+            userLat = position.coords.latitude;
+            userLong = position.coords.longitude;
+            var cityCircle = new google.maps.Circle({
+                strokeColor: '#673AB7',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#673AB7',
+                fillOpacity: 0.35,
+                map: map,
+                center: {
+                    lat: latitude,
+                    lng: longitude
+                },
+                radius: 20
+            });
+            var request = {
+                origin: {
+                    lat: userLat,
+                    lng: userLong
+                },
+                destination: address,
+                travelMode: google.maps.TravelMode["WALKING"]
+            };
+            directionsService.route(request, function(response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                }
+            });
+        }
+        var geoError = function(error) {
+            $('#locationModal').modal('show');
+        }
+        navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    };
+
+    function computeTotalDistance(result) {
+        var total = 0;
+        var myroute = result.routes[0];
+        for (var i = 0; i < myroute.legs.length; i++) {
+            total += myroute.legs[i].distance.value;
+        }
+        total = total * 0.000621371;
+        return Math.round(total * 100) / 100;
+    }
+
+    function initMap() {
+          directionsService = new google.maps.DirectionsService();
+          directionsDisplay = new google.maps.DirectionsRenderer({
+              suppressMarkers: true,
+              panel: document.getElementById('directions')
+          });
+          map = new google.maps.Map(document.getElementById('map'), {
+              center: myLatlng,
+              zoom: 15
+          });
+          directionsDisplay.setMap(map);
+          var infowindow = new google.maps.InfoWindow({
+              content: 'Test'
+          });
+          var marker = new google.maps.Marker({
+              position: myLatlng,
+              map: map,
+              title: 'Test'
+          });
+          marker.addListener('click', function() {
+              infowindow.open(map, marker);
+          });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCqD4OgtgMPzgMWVp3G6oBu5CV5i90EeA&callback=initMap" async defer></script>
