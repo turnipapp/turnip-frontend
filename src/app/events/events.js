@@ -21,10 +21,10 @@ module.exports = {
 
     $scope.updateResponse = function (id, response) {
       if (response === 'yes' || response === 'no' || response === 'maybe') {
-        var token = $cookies.get('token');
-        var postObj = {token: token, eventId: id, response: response};
+        var postObj = {response: response};
+        var headers = {headers: {token: $cookies.get('token')}};
 
-        $http.post("http://localhost:5000/events/response", postObj).then(function (res) {
+        $http.put("http://localhost:5000/events/" + id + "/updateInvite", postObj, headers).then(function (res) {
           if (res.data.success) {
             for (var i = 0; i < $scope.events.length; i++) {
               if ($scope.events[i].id === id) {
