@@ -4,4 +4,10 @@
             Feed
         </div>
     </div>
+
+    <div ng-repeat="post in feed" as-card as-m-y="2" ng-click="goToEvent(post.eventId)">
+        <div as-p-xy="2">
+            {{post.author}} posted in <span as-f="n bold">{{post.eventTitle}}</span>. "{{post.preview}}"
+        </div>
+    </div>
 </div>
