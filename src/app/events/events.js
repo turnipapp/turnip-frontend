@@ -1,6 +1,11 @@
 module.exports = {
   template: require('./index.html'),
   controller: function ($scope, $cookies, $http, $location, $rootScope) {
+    $scope.loading = {
+      past: true,
+      upcoming: true
+    };
+
     $http.get('http://localhost:5000/themes', {headers: {token: $cookies.get('token')}}).then(function (res) {
       if (res.data.success) {
         $scope.themes = res.data.themes;
@@ -10,12 +15,14 @@ module.exports = {
     $http.get('http://localhost:5000/events/past', {headers: {token: $cookies.get('token')}}).then(function (res) {
       if (res.data.success) {
         $scope.past = res.data.past;
+        $scope.loading.past = false;
       }
     });
 
     $http.get('http://localhost:5000/events/upcoming', {headers: {token: $cookies.get('token')}}).then(function (res) {
       if (res.data.success) {
         $scope.upcoming = res.data.upcoming;
+        $scope.loading.upcoming = false;
       }
     });
 

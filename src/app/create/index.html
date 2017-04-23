@@ -91,7 +91,12 @@
                         </div>
                     </div>
                 </div>
-                <button as-i-button-good ng-click="create()">Create</button>
+                <div ng-if="loading.create" class="text-center">
+                    <img ng-src=require("../../images/loading.svg ") width="35px" height="auto"/>
+                </div>
+                <div ng-if="!loading.create">
+                    <button as-i-button-good ng-click="create()">Create</button>
+                </div>
             </div>
         </div>
     </div>

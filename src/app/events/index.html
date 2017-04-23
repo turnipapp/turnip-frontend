@@ -3,6 +3,9 @@
     <div as-m-b="2">
         <div as-f="s bold">Invites</div>
     </div>
+    <div ng-if="loading.upcoming" class="text-center">
+        <img ng-src=require("../../images/loading.svg ") width="35px" height="auto"/>
+    </div>
     <div ng-if="upcoming.length == 0">
         <div class="text-center">
             <span as-f="s bold"><span as-f-c="mono">You have no past events.</span></span>
@@ -60,6 +63,9 @@
 
     <div as-m-b="2">
         <div as-f="s bold">Past Events</div>
+    </div>
+    <div ng-if="loading.past" class="text-center">
+        <img ng-src=require("../../images/loading.svg ") width="35px" height="auto"/>
     </div>
     <div ng-if="past.length == 0">
         <div class="text-center" as-m-t="4">

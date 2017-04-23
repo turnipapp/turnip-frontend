@@ -1,6 +1,10 @@
 module.exports = {
   template: require('./index.html'),
   controller: function ($scope, $http, $cookies, $location) {
+    $scope.loading = {
+      create: false
+    };
+
     $scope.steps = {
       state: 0,
       steps: [
@@ -106,6 +110,7 @@ module.exports = {
      */
     $scope.create = function () {
       try {
+        $scope.loading.create = true;
         if (allForms()) {
           var dateFrom = new Date($scope.event.dateFrom.date);
           dateFrom.setHours($scope.event.dateFrom.time.getHours());
@@ -126,6 +131,7 @@ module.exports = {
 
           $http.post('http://localhost:5000/event', event, {headers: {token: $cookies.get('token')}}).then(function (res) {
             if (res.data.success) {
+              $scope.loading.create = false;
               $location.path('/event/' + res.data.eventId);
             } else {
               $scope.message = res.data.message;
