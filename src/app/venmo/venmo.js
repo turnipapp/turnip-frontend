@@ -4,7 +4,6 @@ module.exports = {
     var id = $stateParams.id;
     $http.get("http://localhost:5000/event/" + id + "/role", {headers: {token: $cookies.get('token')}}).then(function (res) {
       if (res.data.success) {
-        console.log(res.data);
         $scope.role = res.data.role;
       }
     });
