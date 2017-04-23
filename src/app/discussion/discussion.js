@@ -77,7 +77,6 @@ module.exports = {
     $scope.$watch('newPostContent', function () {
       if (angular.isDefined($scope.newPostContent) && $scope.newPostContent.substring(lastTag - 1).includes('@')) {
         var indexOfAt = $scope.newPostContent.indexOf('@', lastTag);
-        console.log(indexOfAt);
         var afterAt = $scope.newPostContent.substring(indexOfAt + 1);
         var tagString;
         if (afterAt.includes(' ')) {
