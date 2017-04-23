@@ -15,10 +15,13 @@
 
 <div class="new-post" as-m-t="4">
     <textarea ng-model="newPostContent" placeholder="Share something..."></textarea>
-    <div ng-repeat="tag in tags | limitTo:5" ng-click="addTag(tag)" as-p-x="4" class="tag">
-      {{tag}}
+    <div ng-repeat="tag in tags | limitTo:5" ng-click="addTag(tag)" as-p-x="4" class="tag" style="outline: none">
+      {{tag.firstName}} {{tag.lastName}}
     </div>
-    <div as-p-xy="2" class="row">
+    <div class="text-center" ng-if="loading.newPost">
+        <img ng-src=require("../../images/loading.svg ") width="35px" height="auto"/>
+    </div>
+    <div as-p-xy="2" class="row" ng-if="!loading.newPost">
         <button as-i-button-good ng-click="newPost()">Post</button>
     </div>
 </div>
