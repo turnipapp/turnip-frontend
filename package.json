@@ -11,6 +11,7 @@
     "babel-core": "^6.24.0",
     "file-loader": "^0.10.1",
     "image-webpack-loader": "^3.3.0",
+    "ng-file-upload": "^12.2.13",
     "svg-loader": "0.0.2"
   },
   "devDependencies": {

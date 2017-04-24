@@ -1,6 +1,6 @@
 module.exports = {
   template: require('./index.html'),
-  controller: function ($scope, $stateParams, $http, $cookies, jwtHelper) {
+  controller: function ($scope, $stateParams, $http, $cookies, jwtHelper, Upload) {
     var id = $stateParams.id;
     $scope.commenting = {};
     $scope.loading = {
@@ -151,6 +151,33 @@ module.exports = {
                   lastTag = 0;
                 }
               });
+            }
+          });
+        }
+      });
+    };
+
+    $scope.uploadFiles = function (file) {
+      $scope.f = file;
+      $scope.loading.newPost = true;
+      var url = "http://localhost:5000/upload/" + id;
+      file.upload = Upload.upload({
+        url: url,
+        method: 'POST',
+        headers: {
+          token: $cookies.get('token')
+        },
+        file: file
+      });
+
+      file.upload.then(function (res) {
+        if (res.data.success) {
+          $http.get('http://localhost:5000/posts/' + $scope.event._id, {headers: {token: $cookies.get('token')}}).then(function (getRes) {
+            if (getRes.data.success) {
+              $scope.loading.newPost = false;
+              $scope.posts = getRes.data.posts;
+              $scope.tags = [];
+              lastTag = 0;
             }
           });
         }

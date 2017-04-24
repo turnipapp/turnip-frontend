@@ -1,5 +1,6 @@
 require('./dependencies/as');
 require('angular-cookies');
+require('ng-file-upload');
 
 var create = require('./app/create/create');
 var dashboard = require('./app/dashboard/dashboard');
@@ -38,7 +39,7 @@ var app = 'app';
 module.exports = app;
 
 angular
-  .module(app, ['ui.router', 'angular-jwt', 'angularStyle', 'ngCookies', 'ngMaterial'])
+  .module(app, ['ui.router', 'angular-jwt', 'angularStyle', 'ngCookies', 'ngMaterial', 'ngFileUpload'])
   .constant('API', {url: 'http://localhost:5000/'})
   .config(routesConfig)
   .component('app', hello)
