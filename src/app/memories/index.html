@@ -1,1 +1,12 @@
-MEMORIES
+<div as-f="l bold">
+    Memories
+</div>
+<div ng-repeat="mem in memories" as-card as-m-y="4">
+    <div as-p-xy="4">
+        <div as-f="s bold">{{mem.name}} said</div>
+        <div as-m-y="2">
+            <span as-f="l normal">{{mem.text}}</span>
+        </div>
+        <div as-f="s bold">{{mem.comments.length}} <span ng-if="mem.comments.length === 1">person</span><span ng-if="mem.comments.length !== 1">people</span> responded and {{mem.likers.length}} liked it.</div>
+    </div>
+</div>
