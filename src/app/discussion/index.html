@@ -59,7 +59,7 @@
     <div class="post-comment">
       <div ng-repeat="comment in post.comments" as-p-xy="4">
         <div>
-          <span as-f="m bold">{{comment.author}}</span><span as-f="s normal"> - {{comment.timestamp | date:'MMMM d, yyyy'}}</span>
+          <span as-f="m bold">{{comment.firstName}} {{comment.lastName}}</span><span as-f="s normal"> - {{comment.timestamp | date:'MMMM d, yyyy'}}</span>
         </div>
         <div as-m-t="1">
           {{comment.body}}
