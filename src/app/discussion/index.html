@@ -21,8 +21,13 @@
     <div class="text-center" ng-if="loading.newPost">
         <img ng-src=require("../../images/loading.svg ") width="35px" height="auto"/>
     </div>
-    <div as-p-xy="2" class="row" ng-if="!loading.newPost">
-        <button as-i-button-good ng-click="newPost()">Post</button>
+    <div class="row" as-p-xy="2" ng-if="!loading.newPost">
+        <div class="col-sm-6">
+            <button as-i-button type="file" ngf-select="uploadFiles($file)" name="file">Upload</button>
+        </div>
+        <div class="col-sm-6">
+            <button as-i-button-good ng-click="newPost()">Post</button>
+        </div>
     </div>
 </div>
 
@@ -37,6 +42,9 @@
     <div as-p-xy="4">
       <div as-f="m bold">{{post.name}}<span as-f="s normal"> - {{post.timestamp | date:'MMMM d, yyyy'}}<span style="color:red" as-p-l="3" ng-if="isHost" ng-click="deletePost(post._id)">Delete</span></span></div>
       <div as-p-t="2">{{post.text}}</div>
+      <div ng-if="post.isImage">
+        <img src="https://s3.us-east-2.amazonaws.com/turnip-cdn/{{post._id}}" width="100%" height="auto"/>
+      </div>
     </div>
     <div class="action-box">
       <div class="row">
