@@ -27,7 +27,7 @@
 <div as-card as-m-b="4">
     <div as-p-xy="4">
         <div class="row text-center">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div as-f="l bold">
                     Weather Forecast
                 </div>
@@ -54,14 +54,15 @@
 <div as-m-b="2">
     <span as-f="l bold">Guests</span>
 </div>
+
 <div as-card as-m-b="4">
     <div role="tablist" class="card-tabs row">
-        <div ng:click="selected = 1" ng-class="{selected: selected == 1}" ng-init="selected=1" class="col-sm-3 tab">Yes</div>
-        <div ng:click="selected = 2" ng-class="{selected: selected == 2}" class="col-sm-3 tab">Maybe</div>
-        <div ng:click="selected = 3" ng-class="{selected: selected == 3}" class="col-sm-3 tab">No</div>
-        <div ng:click="selected = 4" ng-class="{selected: selected == 4}" class="col-sm-3 tab">Pending</div>
+        <div ng-click="tab = 'yes'" ng-class="{selected: tab == 'yes'}" class="col-sm-3 tab">Yes</div>
+        <div ng-click="tab = 'maybe'" ng-class="{selected: tab == 'maybe'}" class="col-sm-3 tab">Maybe</div>
+        <div ng-click="tab = 'no'" ng-class="{selected: tab == 'no'}" class="col-sm-3 tab">No</div>
+        <div ng-click="tab = 'pending'" ng-class="{selected: tab == 'pending'}" class="col-sm-3 tab">Pending</div>
     </div>
-    <div ng:show="selected == 1">
+    <div ng-if="tab == 'yes'">
         <div as-p-xy="4" class="text-center" ng-if="guests.yes.length == 0">
             No one has said yes.
         </div>
@@ -72,9 +73,9 @@
         </div>
     </div>
 
-    <div ng:show="selected == 2">
-        <div as-p-xy="4" class="text-center" ng-if="guests.no.length == 0">
-            No one has said no.
+    <div ng-if="tab == 'maybe'">
+        <div as-p-xy="4" class="text-center" ng-if="guests.maybe.length == 0">
+            No one has said maybe.
         </div>
         <div ng-if="guests.maybe.length != 0">
             <div ng-repeat="guest in guests.maybe" as-p-xy="4">
@@ -83,9 +84,9 @@
         </div>
     </div>
 
-    <div ng:show="selected == 3">
-        <div as-p-xy="4" class="text-center" ng-if="guests.maybe.length == 0">
-            No one has said maybe.
+    <div ng:show="tab == 'no'">
+        <div as-p-xy="4" class="text-center" ng-if="guests.no.length == 0">
+            No one has said no.
         </div>
         <div ng-if="guests.no.length != 0">
             <div ng-repeat="guest in guests.no" as-p-xy="4">
@@ -94,7 +95,7 @@
         </div>
     </div>
 
-    <div ng:show="selected == 4">
+    <div ng:show="tab == 'pending'">
         <div as-p-xy="4" class="text-center" ng-if="guests.pending.length == 0">
             There are no pending invites.
         </div>
