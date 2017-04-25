@@ -26,16 +26,16 @@ module.exports = {
       }
     });
 
-    $scope.updateResponse = function (id, response) {
+    $scope.updateResponse = function (event, response) {
+      console.log(event);
       if (response === 'yes' || response === 'no' || response === 'maybe') {
         var postObj = {response: response};
         var headers = {headers: {token: $cookies.get('token')}};
 
-
-        $http.put("http://localhost:5000/events/" + id + "/updateInvite", postObj, headers).then(function (res) {
+        $http.put("http://localhost:5000/event/" + event._id + "/updateInvite", postObj, headers).then(function (res) {
           if (res.data.success) {
             for (var i = 0; i < $scope.events.length; i++) {
-              if ($scope.events[i].id === id) {
+              if ($scope.events[i].id === event._id) {
                 $scope.events[i].response = response;
               }
             }

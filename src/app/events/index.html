@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div ng-if="event.response !== 'yes'" class="bottom-card-tab col-xs-4">
-                    <div class="" as-p-y="2" ng-click="updateResponse(event._id, 'yes')">
+                    <div class="" as-p-y="2" ng-click="updateResponse(event, 'yes')">
                         <span as-f="s bold">Yes</span>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div ng-if="event.response !== 'maybe'" class="bottom-card-tab col-xs-4">
-                    <div class="" as-p-y="2" ng-click="updateResponse(event.id, 'maybe')">
+                    <div class="" as-p-y="2" ng-click="updateResponse(event, 'maybe')">
                         <span as-f="s bold">Maybe</span>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div ng-if="event.response !== 'no'" class="bottom-card-tab col-xs-4">
-                    <div class="" as-p-y="2" ng-click="updateResponse(event.id, 'no')">
+                    <div class="" as-p-y="2" ng-click="updateResponse(event, 'no')">
                         <span as-f="s bold">No</span>
                     </div>
                 </div>
