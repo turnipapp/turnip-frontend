@@ -31,6 +31,7 @@ module.exports = {
         var postObj = {response: response};
         var headers = {headers: {token: $cookies.get('token')}};
 
+
         $http.put("http://localhost:5000/events/" + id + "/updateInvite", postObj, headers).then(function (res) {
           if (res.data.success) {
             for (var i = 0; i < $scope.events.length; i++) {

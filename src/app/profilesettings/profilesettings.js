@@ -1,7 +1,7 @@
 module.exports = {
   template: require('./index.html'),
   controller: function ($scope, $rootScope, $cookies, $http) {
-    $http.get($rootScope.url + '/account', {
+    $http.get($rootScope.url + '/account/', {
       headers: {
         token: $cookies.get('token')
       }
@@ -11,7 +11,7 @@ module.exports = {
       }
     });
     $scope.update = function () {
-      $http.put($rootScope.url + '/account', $scope.userData, {
+      $http.put($rootScope.url + '/account/update', $scope.userData, {
         headers: {
           token: $cookies.get('token')
         }
