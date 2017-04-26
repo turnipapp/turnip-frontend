@@ -2,6 +2,9 @@ module.exports = {
   template: require('./index.html'),
   controller: function ($scope, $http, $cookies, $stateParams, $state) {
     $scope.tab = 'yes';
+    $scope.states = {
+      showDeleteModal: false
+    };
     $scope.setTab = function (tab) {
       $scope.guestTabs.current = tab.name;
       for (var i = 0; i < $scope.guestTabs.tabs.length; i++) {

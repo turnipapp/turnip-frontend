@@ -4,10 +4,12 @@
     <span id="latitude" style="display:none">{{event.location.geometry.location.lat}}</span>
     <span id="longitude" style="display:none">{{event.location.geometry.location.lng}}</span>
 </div>
-<div id="map" style="width: 100%; height: 500px">
+<div id="map" style="width: 100%; height: 500px" as-m-b="4">
 Loading...
 </div>
-<div id="directions" style="width:100%"></div>
+<div as-card as-p-xy="4" id="directions" style="width:100%">
+    <!-- <img ng-src=require("../../images/loading.svg ") width="35px" height="auto"/> -->
+</div>
 
 <script type="text/javascript">
     var address;

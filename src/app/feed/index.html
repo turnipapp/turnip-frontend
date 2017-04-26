@@ -6,12 +6,15 @@
     </div>
 
     <div ng-repeat="post in feed" as-card as-m-y="2" ng-click="goToEvent(post.eventId)">
-        <div as-p-xy="2">
+        <div as-p-xy="2" ng-if="post.isImage == true">
+            {{post.author}} posted a photo in <span as-f="n bold">{{post.eventTitle}}</span>.
+        </div>
+        <div as-p-xy="2" ng-if="post.isImage == false">
             {{post.author}} posted in <span as-f="n bold">{{post.eventTitle}}</span>. "{{post.preview}}"
         </div>
     </div>
 
-    <div class="text-center">
+    <div class="text-center" ng-if="feed.length == 0">
         <span as-f="s bold"><span as-f-c="mono">There are no updates.</span></span>
     </div>
 </div>

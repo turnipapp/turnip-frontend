@@ -15,7 +15,7 @@
                     Guests
                 </div>
                 <div as-f="m normal">
-                    Guest invited: {{guests.count}}
+                    Guest invited: {{guests.yes.length + guests.no.length + guests.maybe.length + guests.pending.length}}
 
                 </div>
             </div>
@@ -121,7 +121,27 @@
         <div class="col-sm-6 no-margin">
             <div class="col-sm-8"></div>
             <div class="col-sm-4 no-margin">
-                <button as-i-button-bad ng-click="delete()">Delete</button>
+                <button as-i-button-bad ng-click="states.showDeleteModal = true">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-bg" ng-if="states.showDeleteModal == true"></div>
+<div class="small-modal" ng-if="states.showDeleteModal == true">
+    <div as-card as-p-xy="4">
+        <div as-f="m bold">
+            Warning!
+        </div>
+        <div as-m-y="4">
+            <p as-f="m normal">Are you sure you want to delete this event. This cannot be undone.</p>
+            {{showDeleteModal}}
+        </div>
+        <div class="row" as-m-t="4">
+            <div class="col-sm-6 no-margin" >
+                <button as-i-button-gray as-m-r="2" ng-click="states.showDeleteModal = false">No</button>
+            </div>
+            <div class="col-sm-6 no-margin" >
+                <button as-i-button-bad as-m-l="2" ng-click="delete()">Yes</button>
             </div>
         </div>
     </div>
