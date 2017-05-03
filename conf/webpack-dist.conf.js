@@ -43,11 +43,12 @@ module.exports = {
           'html-loader'
         ]
       }
-    ]
+    ],
+    exprContextCritical: false,
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     FailPlugin,
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html')
@@ -70,5 +71,6 @@ module.exports = {
   entry: {
     app: `./${conf.path.src('index')}`,
     vendor: Object.keys(pkg.dependencies)
-  }
+  },
+  target: 'node'
 };

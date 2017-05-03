@@ -48,9 +48,10 @@ module.exports = {
       }
     ]
   },
+  target: 'node',
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     FailPlugin,
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html')
